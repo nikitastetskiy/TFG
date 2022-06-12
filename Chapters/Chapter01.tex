@@ -1,0 +1,96 @@
+\chapter{Contexto}\label{ch:context}
+%************************************************
+
+\section{Motivación o justificación del proyecto}
+
+\vspace{0.3cm}
+
+\indent En el año 1989 el Internet se abre al público, una herramienta utilizada por pocos aunque, hoy en día, el intercambio digital de información entre personas se ha convertido en algo sumamente esencial dentro de la sociedad. Esto sin contar el hecho de que en 2020 las personas de España y demás países estuvieron en confinamiento y su única manera de comunicarse con otras personas era mediante herramientas digitales.
+
+\vspace{0.3cm}
+
+Para podernos situarnos con más claridad, el estudio anual de IAB Spain nos indica que en el año 2022 el 93\% de las personas que residen en España son usuarios del Internet. Además de ese porcentaje, el 85\% (28,3 millones de españoles) utilizan las redes sociales. \cite{Studio-Aloha}
+
+\vspace{0.3cm}
+
+Estos datos nos dejan en evidencia el hecho de que el uso de estas herramientas, tales como el Internet y las redes sociales, van en aumento. Aunque no nos debería de asombrar, ya que la masificación y el uso del Internet y las redes sociales viene de mucho antes. En el año 2012 se realizó un estudio en el que se mostraba que las redes sociales pueden llegar a crear una dependencia más grande aun que el tabaco. \cite{Tabaco-Study}
+
+\vspace{0.3cm}
+
+Incluso muchos programadores de redes sociales han admitido que el diseño de tales aplicaciones es adictivo de manera deliberada. Un ejemplo de esto puede ser la creación del scroll infinito, donde se brinda gran cantidad de información de una manera continua. \cite{Social-Deliberately}
+
+\vspace{0.3cm}
+
+La solución más sencilla, pero drástica, puede llegar a ser abandonar las redes sociales, aunque nos surge el problema de no estar tan \textit{actualizados} como otras personas a nuestro alrededor. Otra solución es usar en una menor medida las redes sociales, aunque esto nos lleva de nuevo al problema de cuándo parar si la aplicación que usamos tiene scroll o contenido infinito.
+
+\vspace{0.3cm}
+
+Ante tal necesidad de querer estar actualizados y a la vez querer saber cuando parar de consumir contenido, la solución que propongo es un consumo finito de contenido diario y arbitrario. Una aplicación web que aporte la información necesaria de las tendencias más destacables del día.
+
+\section{Objetivos}
+
+\subsection{Objetivo general}
+La meta final de este proyecto es construir una aplicación web autosuficiente y bien estructurada, cuyo contenido se pueda actualizar diariamente de manera automática. Con el objetivo de que el usuario final pueda consumirlo de una manera eficaz y eficiente.
+
+La información que se le brinda al usuario se basará en las tendencias del país seleccionado por él. A partir de las tendencias se deducirán datos, estadísticas, noticias y enlaces de interés.
+
+Toda esta información deberá albergar un carácter sencillo y deberá ser fácil de consumir, alejándose de la posibilidad de ser abrumante o atosigadora.
+\subsection{Objetivos específicos}
+
+\begin{itemize}
+\item El contenido que se le brinda al usuario debe de ser corto y finito, pero a la vez suficiente con el fin de informarse de manera adecuada.
+\item La tendencia que se aporta al usuario proviene de la API de Twitter y tiene que ser la más destacable de la red social.
+\item La aplicación web debe de ser intuitiva y fácil de usar, el diseño debe ajustarse para el uso en el móvil.
+\item La estructura del proyecto deberá seguir el modelo API REST, siguiendo una arquitectura web por capas.
+\item Cada contenido proporcionado para el usuario se brindará en un diseño de carta y ocupará el mayor espacio de pantalla posible. De esta manera se aprovecharán al máximo la información disponible, siendo esta una noticia, un dato de una estadística o un enlace de interés.
+\end{itemize}
+
+\section{Sección en proceso !!!}
+En esta sección se planificarán las tareas y los objetivos. Se crearán dos diagramas de Gantt, uno dónde se planifiquen los objetivos y uno final real. Los objetivos planteados son:
+\begin{itemize}
+\item Planificación y presupuesto.
+\item Estado del arte:
+\begin{itemize}
+    \item Dominio del problema a resolver
+    \item Metodologías y tecnologías de base que podrían usarse
+    \item Trabajos relacionados y Aplicaciones similares
+\end{itemize}
+\item Propuesta:
+\begin{itemize}
+    \item Metodología de desarrollo - SCRUM (profundidad)
+    \item Analisis, requisitos e historias de usuario (Backlogs)
+\end{itemize}
+\item Diseño:
+\begin{itemize}
+    \item Explicación de la arquitectura usada, distintas capas y protocolos (diagramas y esquemas)
+    \item Diagrama de paquetes, clases, bocetos ...
+    \item Justificación API de Twitter (comparación con Pytrends)
+    \item Integración continua
+    \begin{itemize}
+        \item Gestor de paquetes: poetry
+        \item Linter y Prettier
+        \item GitHub Actions
+        \item Test y virtualización: GH Actions, tox y circleci
+        \item Uso de docker para test (usar comparativas - alpine)
+        \item Despliegue en Vercel (usar comparativas - netlify)
+    \end{itemize}
+    \item Justificación de data classes de python
+    \item Justificación del micro-framework - FastAPI
+    \item Justificación de front end framework - Vue3.js
+    \item Justificación de TailwindCSS
+    \item Justificación de la base de datos MongoDB
+    \item Implementación de sistema de Logs (Opcional)
+    \item Prueba de prestaciones con uvicorn (Opcional)
+\end{itemize}
+\item Implementación:
+\begin{itemize}
+    \item Explicación del algoritmo que recoge trends de la API de Twitter
+    \item Explicación del algoritmo que recoge noticias a partir de los trends
+    \item Explicación del algoritmo que recoge estadísticas del volumen de seguimiento (rango de tendencia)
+    \item Explicación del algoritmo que recoge estadísticas del volumen de distintas regiones del país seleccionado
+    \item Explicación del algoritmo que comprueba si la noticia es real o falsa (Opcional)
+\end{itemize}
+    \item Conclusión
+    \item Trabajos futuros y Bibliografía
+\end{itemize}
+
