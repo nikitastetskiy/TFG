@@ -57,37 +57,38 @@ Toda esta información deberá albergar un carácter sencillo y deberá ser fác
 \section{Sección en proceso !!!}
 En esta sección se planificarán las tareas y los objetivos. Se crearán dos diagramas de Gantt, uno dónde se planifiquen los objetivos y uno final real. Los objetivos planteados son:
 \begin{itemize}
-\item Planificación y presupuesto.
-\item Estado del arte:
+\item Planificación y presupuesto.  DONE
+\item Estado del arte:  DONE
 \begin{itemize}
-    \item Dominio del problema a resolver
-    \item Metodologías y tecnologías de base que podrían usarse
-    \item Trabajos relacionados y Aplicaciones similares
+    \item Dominio del problema a resolver   DONE
+    \item Metodologías y tecnologías de base que podrían usarse -> (Conclusión) DONE
 \end{itemize}
 \item Propuesta:
 \begin{itemize}
-    \item Metodología de desarrollo - SCRUM (profundidad)
+    \item Metodología de desarrollo - SCRUM (profundidad) DONE
     \item Analisis, requisitos e historias de usuario (Backlogs)
-    \item DevOps ?
+    \item DevOps ? como metodologia
 \end{itemize}
 \item Diseño:
 \begin{itemize}
     \item Explicación de la arquitectura usada, distintas capas y protocolos (diagramas y esquemas)
     \item Diagrama de paquetes, clases, bocetos ...
-    \item Justificación API de Twitter (comparación con Pytrends)
+    \item Justificación API de Twitter (comparación con Pytrends) DONE antes
     \item Integración continua
     \begin{itemize}
         \item Gestor de paquetes: poetry
         \item Linter y Prettier
+        \item Mypy y flake8
         \item GitHub Actions
-        \item Test y virtualización: GH Actions, tox y circleci
-        \item Uso de docker para test (usar comparativas - alpine)
+        \item Test y virtualización: GH Actions, tox
+        \item Uso de docker para test (usar comparativas - alpine) (Opcional)
         \item Despliegue en Vercel (usar comparativas - netlify)
     \end{itemize}
-    \item Justificación de data classes de python
+    \item Justificación de pydantic de python
     \item Justificación del micro-framework - FastAPI
     \item Justificación de front end framework - Vue3.js
     \item Justificación de TailwindCSS
+    \item Justificación de Apexcharts
     \item Justificación de la base de datos MongoDB
     \item Implementación de sistema de Logs (Opcional)
     \item Prueba de prestaciones con uvicorn (Opcional)
@@ -95,10 +96,10 @@ En esta sección se planificarán las tareas y los objetivos. Se crearán dos di
 \item Implementación:
 \begin{itemize}
     \item Explicación del algoritmo que recoge trends de la API de Twitter
-    \item Explicación del algoritmo que recoge noticias a partir de los trends
+    \item Explicación del algoritmo que recoge noticias a partir de los trends - Comparar con la api y scrapping
     \item Explicación del algoritmo que recoge estadísticas del volumen de seguimiento (rango de tendencia)
-    \item Explicación del algoritmo que recoge estadísticas del volumen de distintas regiones del país seleccionado
-    \item Explicación del algoritmo que comprueba si la noticia es real o falsa (Opcional)
+    \item Explicación del algoritmo que recoge estadísticas de las palabras más usadas en la tendencia y YAKE
+    \item Explicación del algoritmo que recoge estadísticas del sentimiento general de la tendencia (Vader) comparar con ML y texblob
 \end{itemize}
     \item Conclusión
     \item Trabajos futuros y Bibliografía

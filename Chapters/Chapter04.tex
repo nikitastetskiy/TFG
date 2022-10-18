@@ -2,3 +2,323 @@
 %************************************************
 
 \section{Metodología de desarrollo}\label{sec:metodologia}
+
+El proceso de desarrollo de un software puede llegar a ser una tarea muy ardua, durante mucho tiempo esta labor se ha llevado a cabo sin ninguna metodología definida. Para situar el contexto, una metodología se define como una colección de procedimientos, técnicas, herramientas y documentos que llegan a ayudar a los desarrolladores a la hora de implementar software. \cite{gomez2010criterios}
+
+\vspace{0.3cm}
+
+Durante las últimas décadas, se han establecido dos grandes corrientes diferenciales que representan estas metodologías. Por un lado, las metodologías tradicionales se centran en el proceso y controlan estrictamente las actividades que lo acompañan. Las metodologías ágiles, por otro lado, se enfocan en el elemento humano, centrándose en la colaboración y participación del cliente en el proceso a través de iteraciones muy cortas. \cite{gomez2010criterios}
+
+\begin{table}[h]
+    \footnotesize
+    \centering
+    \setlength\arrayrulewidth{0.8pt}
+    \begin{tabular}{| >{\centering\arraybackslash}m{2in} | >{\centering\arraybackslash}m{2in} |}
+
+        \hline
+        \rowcolor{RoyalBlue}
+        \textbf{Metodologías Ágiles} & \textbf{Metodologías Tradicionales} \\
+        \hline
+        Basadas en heurísticas provenientes de prácticas de producción de código & Basadas en normas provenientes de estándares seguidos por el entorno de desarrollo \\
+        \hline
+        Especialmente preparados para cambios durante el proyecto & Cierta resistencia a los cambios \\
+        \hline
+        Impuestas internamente (por el equipo) & Impuestas externamente \\
+        \hline
+        Proceso menos controlado, con pocos principios & Proceso mucho más controlado, con numerosas políticas/normas \\
+        \hline
+        No existe contrato tradicional o al menos es bastante flexible & Existe un contrato prefijado \\
+        \hline
+        El cliente es parte del equipo de desarrollo & El cliente interactúa con el equipo de desarrollo mediante reuniones \\
+        \hline
+        Grupos pequeños (menos de 10 integrantes) y trabajando en el mismo sitio & Grupos grandes y posiblemente distribuidos \\
+        \hline
+        Pocos artefactos y pocos roles & Más artefactos y más roles \\
+        \hline
+        Menos énfasis en la arquitectura del software & La arquitectura del software es esencial y se expresa mediante modelos \\
+        \hline
+        
+    \end{tabular}
+
+    \caption[Comparación de metodologías]{Comparación de metodologías. \cite{canos2003metodologias}}\label{table:comparacion_metodologias}
+
+\end{table}
+
+La parte más importante de las fases iniciales es poder determinar qué metodología es mejor para nuestro proyecto con el fin de lograr los mejores resultados de manera oportuna.
+
+\vspace{0.3cm}
+
+El objetivo general de implementar una metodología es llegar a construir un producto de alta calidad. Esta elección implica un conjunto de principios básicos que deben ser seguidos y respetados. Estos incluyen actividades claras para comprender el problema y comunicarse con los clientes, un método definido para representar el diseño, las mejores prácticas para implementar la solución y estrategias sólidas. \cite{maida2015metodologias}
+
+\vspace{0.3cm}
+
+En base a las características mencionadas y lo explicado en la sección de planificación, se ha considerado que la solución óptima sería una metodología de desarrollo ágil. Considerando que el problema puede cambiar a lo largo del proyecto, por lo que necesitamos una metodología adaptativa y flexible, además la forma de trabajar concuerda mucho más (la cantidad del grupo o su propio manejo).
+
+\subsection{Metodología de trabajo escogida (SCRUM)}
+El nacimiento de la idea de la metodología Scrum fue en el año 1986, con el propósito de aumentar la velocidad de desarrollo de una aplicación y a la vez conservando flexibilidad. Los japonenses Hirotaka Takeuchi e Ikujiro Nonaka  se inspiraron en el concepto de un equipo de rugby de 15 jugadores unido y con el mismo objetivo. Durante los años posteriores este concepto fue remodelado y reforzado hasta convertirse en lo que es a día de hoy, el método ágil más usado en el mundo. \cite{rodriguez2015que}
+
+\vspace{0.3cm}
+
+Scrum puede llegar a ser ventajoso debido a que el cliente se siente comprometido con el proyecto, implicándose en distintas necesidades de tipo funcional y permitiendo realizar revisiones tempranas de los desarrollos fomentando de esta manera las propias entregas. Otras ventajas a destacar puede llegar a ser su adaptación o trabajo en equipo. \cite{rodriguez2015que}
+
+\vspace{0.3cm}
+
+Los componentes de la metodología Scrum son: \cite{rad2019fundamentos}
+
+\begin{enumerate}
+
+    \item
+    Los \textbf{Roles de Scrum}: son los papeles o funciones de cada integrante del equipo, que puede ser:
+    
+        \begin{itemize}
+            \item
+            \textit{El Dueño del Producto (Product Owner)}: representará la función del cliente, con el objetivo de definir historias de usuario y validar la calidad del producto.
+    
+            \item
+            \textit{Scrum Master}: su función es velar por la actividad o ejecución del Scrum, para que se realice correctamente por el equipo. También será el responsable de dirigir y concretar los diferentes eventos.
+    
+            \item
+            \textit{El Equipo de Desarrollo}: son los que tienen la función de realizar y concretar las historias de usuario.
+    
+            \item
+            \textit{Stakeholders}: no tienen función en la ejecución o realización del trabajo, pero están interesados en el producto y represan un papel de suma importancia.
+    
+        \end{itemize}
+
+    \item
+    Los \textbf{Eventos Scrum}: son las reuniones que se llevan a cabo en el equipo de trabajo. Están diseñados para la comunicación y colaboración continua entre equipos, con el objetivo de minimizar la necesidad de mantener reuniones indefinidas que pueden afectar de alguna manera a la planificación del proyecto. Se subdividen en estos tipos:
+
+        \begin{itemize}
+            \item
+            \textit{El Sprint}: trata de un tramo de tiempo fijo, que puede llegar a ser entre una y cuatro semanas, durante el cual el producto que se este desarrollando añade valor gradualmente, de manera que al final de cada sprint el cliente pueda tener una clara visión del producto.
+    
+            \item
+            \textit{La planificación del Sprint (SprintPlanning)}: es una reunión que se lleva a cabo al comienzo o inicio de cada sprint para planificar el trabajo que se realizará a lo largo del sprint.
+    
+            \item
+            \textit{Scrum Diario (Dailys)}: reuniones diarias de corta duración, en estas reuniones los miembros del equipo discuten y dialogan el trabajo realizado en el día anterior y el trabajo que se realizará en el día de la reunión.
+    
+            \item
+            \textit{Revisión del Sprint (Sprint Review)}: una reunión donde cada miembro del equipo presenta lo que ha realizado a lo largo del sprint y lo que debería cambiar o mejorar en el producto para el próximo sprint.
+
+            \item
+            \textit{Retrospectiva del Sprint (SprintRetrospective)}: reuniones con la intención de analizar el trabajo en equipo y discutir áreas para mejorar o colaborar como equipo para el próximo sprint.
+    
+        \end{itemize}
+
+    \item
+    Los \textbf{Artefactos de Scrum}: utilizadas para aumentar la transparencia de la información para que todos los miembros del equipo tengan constancia sobre lo que está ocurriendo. Se subdividen en:
+    
+        \begin{itemize}
+            \item
+            \textit{El Backlog del Producto (ProductBacklog)}: contienen todas las historias de usuario, pero no evalúan el proyecto, y su gestión o responsabilidad recae en el Dueño del Producto.
+    
+            \item
+            \textit{El Backlog del Sprint (SprintBacklog)}: historias de usuario que contienen estimaciones y planes a realizar en el sprint.
+    
+            \item
+            \textit{Incremento}: es el producto que se produce o ocurre al final del sprint.
+    
+        \end{itemize}
+
+\end{enumerate}
+
+\vspace{0.3cm}
+
+\subsection{Adaptación de la metodología de trabajo escogida}
+Habiendo definido los componentes en la sección anterior, es visible que Scrum está dirigido para trabajar en equipo, por lo que se tendrá que adaptar esta metodología al entorno académico del proyecto, que en el caso de este proyecto se reduciría a mi persona, Nikita Stetskiy. Debido a esto, me veré obligado a representar todos los roles del equipo y mis tutores darán función a los stakeholders y a Scrum Master.
+
+\vspace{0.3cm}
+
+Además, se puede dividir el proyecto en dos productos. La memoria, donde el cliente será el tribunal del trabajo de fin de grado y los tutores serán los Dueños del Producto. Mientras que para la propia aplicación, tendremos un cliente ficticio, por ejemplo Mauricio Mares, y el Dueño del Producto seré yo mismo, puesto que seré el que mejor conoceré los intereses del cliente.
+
+\vspace{0.3cm}
+
+En cuanto a los eventos, el Scrum diario no llega a tener sentido en este entorno, al estar formado por solo una persona y los demás eventos se pueden juntar en un mismo encuentro e iteración.
+
+\vspace{0.3cm}
+
+Finalmente, respecto a la velocidad del proyecto, se llegó a detallar en la sección \ref{ch:planificacion_detallada} de la Planificación. Cada Sprint tiene acordada una duración de dos semanas.
+
+\newpage
+\section{Análisis del entorno}
+
+Es necesario estudiar el entorno y a los posibles usuarios que necesiten de nuestro servicio antes de empezar a desarrollar el \textit{Backlog} del Producto. Para ello propondré dos diferentes casos ficticios que estudiaremos a continuación.
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{| >{\centering\arraybackslash}m{0.75in} >{\centering\arraybackslash}m{3.5in}|}
+        \hline
+\multicolumn{2}{|c|}{\cellcolor{RoyalBlue}\textbf{1ª Persona}}                                                                                                                                                                                                                                                                                                                                                                                                                      \\ \hline
+\multicolumn{1}{|c|}{\textbf{Nombre}}                                                                                                                                                                                                                  & Mauricio Mares                                                                                                                                                                                                                \\ \hline
+\multicolumn{1}{|c|}{\textbf{Edad}}                                                                                                                                                                                                                    & 23                                                                                                                                                                                                                            \\ \hline
+\multicolumn{1}{|c|}{\textbf{Sexo}}                                                                                                                                                                                                                    & Masculino                                                                                                                                                                                                                     \\ \hline
+\multicolumn{2}{|c|}{\textbf{Datos relevantes}}                                                                                                                                                                                                                                                                                                                                                                                                                                        \\ \hline
+\multicolumn{2}{|p{4.25in}|}{Terminó la carrera de bellas artes, aunque ahora mismo no se siente lo suficientemente apasionado para trabajar de ello. Uno de los principales motivos es el sobre uso de las redes sociales en su día a día.}                                                                                                                                                                                                                                                    \\ \hline
+\multicolumn{2}{|c|}{\textbf{Contexto de uso}}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+\multicolumn{2}{|p{4.25in}|}{El uso que pretende dar este usuario corresponde a un ámbito casual, ya que pretende usar menos las redes sociales, pero a la par quiere mantenerse actualizado de lo que pasa en el mundo. Por lo que la función que requiere de la aplicación es de informarse de eventos importantes que transcurran diariamente o incluso semanalmente.}                                                                                                                                                         \\ \hline
+\multicolumn{2}{|c|}{\textbf{Necesidad diferencial}}                                                                                                                                                                                                                                                                                                                                                                                                                                   \\ \hline
+\multicolumn{2}{|p{4.25in}|}{La funcionalidad a destacar es que la aplicación deberá guardar todas las tendencias del día y poder dar datos que resuman información de dichas tendencias. Además, Mauricio no tiene que estar constantemente atento a la aparición de una nueva tendencia, ya que se van guardando por días. Esto le permitirá a Mauricio reducir las horas de consumo diario de aplicaciones que requerían su atención constante a cambio de información relevante o actual.} \\ \hline
+\end{tabular}
+\caption[Primer caso de estudio de entorno]{Primer caso de estudio de entorno.}\label{table:1-entorno-persona}
+\end{table}
+
+En este primer caso necesitamos que la aplicación sea capaz de resumir información de tendencias diarias y que a la vez no sea atosigante o que agobie con demasiada cantidad de información, por ende tiene que ser información simple y finita. La posible solución más óptima es organizar tendencias diarias en un \textit{top} o una clasificación de diez tendencias más popular ocurridas a lo largo del día. Además esto se puede guardar por semanas para que el usuario no tenga la obligación de entrar a la web diariamente.
+
+\vspace{0.3cm}
+
+El carácter de la información, simplificada para el usuario que tendrán las tendencias, será puramente informativo y además intentará ser objetiva. La principal diferencia es que al usar las \ac{RRSS}, la información relevante se consigue por medio de la atención. Cuantas más publicaciones u opiniones de personas se lean, más informado estará el usuario. Por lo que el factor diferencial, es que la página web en desarrollo mostrará datos simplificados o resumidos de manera objetiva. Todos estos datos estarán comprimidos de tal manera, que el usuario pueda tener una visión clara sobre la tendencia sin la necesidad de leer un alto número de publicaciones u opiniones.
+
+\vspace{0.3cm}
+
+La información que se aporta al usuario en la aplicación web será modular. De tal manera que cada módulo, que tendrá el diseño de una carta, informará de un dato de interés. Los datos más importantes que puede tener una tendencia y que sea útil para el usuario son datos como la relevancia que está teniendo la tendencia, las palabras o \textit{keywords} más usadas, las opiniones de las personas (vistas de manera objetiva a través de un análisis de sentimientos) y diferentes noticias actuales relacionadas con la propia tendencia.
+
+\vspace{0.3cm}
+
+Des esta manera, al aportar información de manera simplificada, el usuario Mauricio podrá informarse diariamente de manera adecuada y sin la necesidad de perder el tiempo en las \ac{RRSS}.
+
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{| >{\centering\arraybackslash}m{0.75in} >{\centering\arraybackslash}m{3.5in}|}
+        \hline
+\multicolumn{2}{|c|}{\cellcolor{RoyalBlue}\textbf{2ª Persona}}                                                                                                                                                                                                                                                                                                                                                                                                                      \\ \hline
+\multicolumn{1}{|c|}{\textbf{Nombre}}                                                                                                                                                                                                                  & Nuria Nevadas                                                                                                                                                                                                                \\ \hline
+\multicolumn{1}{|c|}{\textbf{Edad}}                                                                                                                                                                                                                    & 37                                                                                                                                                                                                                            \\ \hline
+\multicolumn{1}{|c|}{\textbf{Sexo}}                                                                                                                                                                                                                    & Femenino                                                                                                                                                                                                                     \\ \hline
+\multicolumn{2}{|c|}{\textbf{Datos relevantes}}                                                                                                                                                                                                                                                                                                                                                                                                                                        \\ \hline
+\multicolumn{2}{|p{4.25in}|}{Terminó hace mucho el grado de Empresariales, en los últimos meses empezó a invertir en Bolsa, por su propia cuenta de manera profesional.}                                                                                                                                                                                                                                                    \\ \hline
+\multicolumn{2}{|c|}{\textbf{Contexto de uso}}                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+\multicolumn{2}{|p{4.25in}|}{El uso que pretende dar este usuario corresponde a un ámbito profesional. Pretende tener una visión pequeña y objetiva de búsquedas concretas, en este caso del mercado financiero.}                                                                                                                                                         \\ \hline
+\multicolumn{2}{|c|}{\textbf{Necesidad diferencial}}                                                                                                                                                                                                                                                                                                                                                                                                                                   \\ \hline
+\multicolumn{2}{|p{4.25in}|}{La funcionalidad a destacar en esta aplicación es que se podrá buscar tópicos y obtener la misma información actual que se obtienen también con las tendencias, es decir, datos de interés objetivos.} \\ \hline
+\end{tabular}
+\caption[Segundo caso de estudio de entorno]{Segundo caso de estudio de entorno.}\label{table:1-entorno-persona}
+\end{table}
+
+Al estudiar el segundo caso, la solución que se le plantea al usuario llega a ser bastante parecida al primer caso. El principal factor diferencial es que la información que se aporta en el primer caso es sobre las tendencias y en este caso tendrá que ser sobre búsquedas específicas.
+
+\vspace{0.3cm}
+
+No se podrá dar información sobre la popularidad del tópico, ya que no es una tendencia, pero si información sobre las \textit{keywords} o palabras más usadas, el sentimiento general y las noticias más destacables. Esta información tendrá que ser recopilada de distintas publicaciones que tengan relevancia con el tópico.
+
+\subsection{Estudio competitivo}
+
+En la actualidad las principales aplicaciones que existen que recopilan tendencias a diario son Google Trends y parcialmente la plataforma de Twitter. Ambas poseen fallos, el principal problema de Twitter se incluye en los riesgos de un uso continuo de una \ac{RRSS} que se explicó anteriormente en la sección \ref{ch:estado-del-arte}. Por otro lado, Google Trends posee multiples problemas a la hora de afrontar nuestras necesidades. Primero, no funciona en todos los países, incluyendo España. Además no contienen información relevante que pueda resumir una tendencia o el por qué de su relevancia. Aunque Google Trends posea un exhaustivo historial de las búsquedas que ha tenido dicha tendencia, posibles noticias de interés y tópicos similares, no posee el sentimiento general que está teniendo dicha tendencia y tampoco diferentes \textit{keywords} en relación (esto debido a que carece de publicaciones como Twitter). En resumen ambas aplicaciones principales, tienden a ser incompletas a nuestras necesidades.
+
+\vspace{0.3cm}
+
+También existen otras páginas que usan información de Twitter o Google. Al buscar páginas o aplicaciones web sobre la información de tendencias actuales de Twitter salen resultados como Trendinalia, GetDayTrends o Trends24. Este tipo de páginas web llega a mostrar un contenido puramente estadístico sobre las tendencias, con el uso exclusivo de diagramas o distribuciones globales para explicar el comportamiento de una tendencia.
+
+\vspace{0.3cm}
+
+Realmente este tipo de páginas no indagan en la explicación del contenido de una tendencia para que el usuario pueda estar informado. El objetivo de estas páginas es informar al usuario de datos numéricos que se calculan mientras la tendencia exista, como puede ser la posición de la tendencia respecto a otras durante las últimas 24 horas.
+
+\vspace{0.3cm}
+
+Esto puede llegar a ser información útil si solo quieres saber datos sobre el comportamiento de la tendencia a lo largo de 24 horas. En el caso de nuestra aplicación, aparte de dar datos sobre el comportamiento de la tendencia, tendrá el objetivo de explicar el propósito de la tendencia.
+
+\subsection{Estudio competitivo técnico}
+
+Actualmente las librerías más populares sobre recopilación de tendencias actuales son Tweepy y Pytrends, ambas programadas en el lenguaje Python. Dichas librerías distan de ser perfectas, pero cada una tiene características de carácter diferencial.
+
+\vspace{0.3cm}
+
+\begin{itemize}
+    \item
+    \textbf{Pytrends} \cite{pytrends-manual}
+    
+    Esta librería es una API no oficial que usa información de Google Trends. Por lo que es una librería que aporta información muy valiosa respecto a diferentes tendencias. Esta librería posee numerosas ventajas, a la par que desventajas. Las siguientes características son los métodos que tiene la librería disponibles:
+    \begin{enumerate}
+    \item \textit{Interés a lo largo del tiempo}: devuelve datos históricos e indexados de las búsquedas sobre una palabra clave. Esta información se muestra en la sección Interés a lo largo del tiempo de Google Trends.
+    \item \textit{Interés histórico por hora}: devuelve datos históricos, indexados y por hora de las búsquedas sobre una palabra clave. Envía múltiples solicitudes a Google, cada una de las cuales recupera una semana de datos por hora.
+    \item \textit{Interés por región}: devuelve datos sobre el lugar en el que se busca la palabra clave. Información mostrada en la sección Interés por región de Google Trends.
+    \item \textit{Temas relacionados}: devuelve datos de las palabras clave relacionadas con una palabra clave proporcionada. Se muestra en la sección Temas relacionados de Google Trends.
+    \item \textit{Consultas relacionadas}: devuelve datos de las palabras clave relacionadas con una palabra clave proporcionada. Se muestra en la sección Consultas relacionadas de Google Trends.
+    \item \textit{Búsquedas de tendencias}: devuelve datos de las búsquedas de tendencias más recientes. Se muestran en la sección Búsquedas de tendencias de Google Trends.
+    \item \textit{Gráficos principales}: devuelve los datos de un tema determinado. Se muestra en la sección Gráficos principales de Google Trends.
+    \item \textit{Sugerencia}: devuelve una lista de palabras clave sugeridas adicionales que se pueden usar para refinar una búsqueda de tendencia.
+    \end{enumerate}
+
+    Estas características pueden llegar a ser extremadamente útiles a la hora de gestionar nuestra aplicación. Aunque las principales desventajas son demasiado grandes como para no tenerlas en cuenta:
+
+    \begin{enumerate}
+    \item \textit{Disponibilidad geográfica}: debido a ciertas leyes y normativas, Google Trends no funciona en todos los países del mundo. Por desgracia, España está excluida de momento, aunque se tiene pensado cambiar la normativa o adaptarse a ella.
+    \item \textit{Longevidad}: esta API al no ser oficial, no tiene garantía de estar funcionando siempre. Ya que llegará un momento donde se cambie el \textit{Back-End} de Google e incidirá en el comportamiento de esta API.
+    \item \textit{Limitaciones de llamadas}: El límite de peticiones no se conoce públicamente. Aunque los usuarios hicieron medidas aproximadas, donde se demostraba que 1400 solicitudes secuenciales en un período de tiempo de 4 horas daba lugar al límite (replicado en 2 redes), aunque se podía volver a hacer peticiones después de 60 segundos de tiempo de espera.
+    \end{enumerate}
+
+\end{itemize}
+
+\begin{itemize}
+    \item
+    \textbf{Tweepy} \cite{tweepy-manual}
+    
+    Es un paquete de código abierto que brinda una forma muy conveniente de acceder a la API de Twitter con Python. Tweepy incluye un conjunto de clases y métodos que representan los modelos de Twitter y los extremos de la API. Las principales características para nuestro uso son las siguientes:
+    \begin{enumerate}
+    \item \textit{Obtención de tendencias cerca de una ubicación}: devuelve las 50 tendencias principales para un WOEID (código de país) específico, si la información de tendencias está disponible. La respuesta es una lista de objetos "trend" que codifican el nombre del tema de tendencia, el parámetro de consulta que se puede usar para buscar el tema en la búsqueda de Twitter y la URL de búsqueda de Twitter. Esta información se almacena en caché durante 5 minutos.
+    \item \textit{Búsqueda de publicaciones}: devuelve una colección de publicaciones o \textit{tweets} relevantes que coinciden con una consulta específica. Aunque la API de búsqueda no pretende ser una fuente exhaustiva de Tweets. No todos los Tweets se indexarán o estarán disponibles a través de la interfaz de búsqueda.
+    \end{enumerate}
+
+    Estas características pueden llegar a cumplir las necesidades explicadas anteriormente, aunque tambien tenemos que tener en cuenta las desventajas que presenta esta API.
+
+    \begin{enumerate}
+    \item \textit{Disponibilidad de versiones}: existen actualmente varias versiones de la API publicadas, cada una se accede de una manera diferente y tiene metodos diferentes. La documentación oficial de Twitter no está bien cuidada y no funciona de la misma manera que la aplicación web. Un sencillo ejemplo de ello es que en la web se puede buscar tweets de un país en concreto, mientras que esta función no existe en la API.
+    \item \textit{Historial pobre}: mientras que Google guarda todos los datos de interés sobre una tendencia, Twitter no, por lo que búsquedas antiguas no contendrán mucho valor al usuario en cuanto a la relevancia o interés que presenta un tópico.
+    \end{enumerate}
+
+\end{itemize}
+
+\subsection{Conclusiones de los estudios realizados}
+
+En los apartados anteriores se definieron claramente las ventajas y desventajas del uso de ambas aplicaciones o APIs. Se puede concluir que, aunque Google Trends posea más funciones versátiles y con mayor peso de utilidad en cuanto a nuestras necesidades, sigue teniendo mayores desventajas a la hora de usarlo. La mayor de todas es que no esté disponible en todos los países. La plataforma de twitter en cambio se usa en casi todo el mundo, además se pueden llegar a implementar funciones parecidas con métodos propios y no tener que depender en un mayor nivel de una API externa.
+
+\vspace{0.3cm}
+
+En cuanto a los aspectos que se deberán tratar a la hora de definir las características o funcionalidades de la aplicación se definirán en la siguiente lista. Aunque se entrará más en detalle en la sección posterior.
+
+\begin{itemize}
+    \item
+    Las personas requieren información relevante, concisa y simplificada.
+    \item
+    La información debe ser de contenido finito, a la misma hora aportando al usuario su pleno entendimiento.
+    \item
+    Los usuarios deberán ser capaces de usar la aplicación en todos los dispositivos que tengan acceso web. Además deberá tener un diseño \textit{responsive}, para que se adapte a la interfaz del usuario.
+    \item
+    Los usuarios tienen que ser capaces de navegar a través de distintas tendencias. Poder elegir tanto el país de búsqueda como la fecha para poder informarse debidamente.
+    \item
+    Los usuarios tienen que ser capaces de realizar búsquedas de distintos tópicos de interés y poder informarse con datos relacionados y actuales.
+    \item
+    El diseño será presentado mediante módulos o cartas. Cada carta tendrá información útil y de necesidad al usuario.
+    \item
+    Un módulo contendrá datos sobre la popularidad de la tendencia y su correspondiente gráfico.
+    \item
+    Otro módulo contendrá datos sobre palabras y \textit{keywords} más usadas sobre la tendencia y su correspondiente gráfico.
+    \item
+    Otro módulo contendrá un sentimiento general y un gráfico visual sobre dicho comportamiento.
+    \item
+    También habrá tres módulos de noticias de interés general sobre la tendencia.
+    \item
+    Cada módulo deberá respetar tanto el idioma como la localización elegida por el usuario.
+    \item
+    Se deberá tener en cuenta que el diseño sea simple y agradable al usuario.
+    \item
+    Otro factor a tener en cuenta es el plan de peticiones que ofrece Twitter, el cual es muy limitado.
+\end{itemize}
+
+\chapter{Requisitos del sistema}
+Gracias a los estudios y conclusiones realizadas en el capitulo anterior, se puede detallar de una manera más sencilla los siguientes requerimientos.
+\section{Requisitos Funcionales}
+
+\begin{enumerate}
+    { \renewcommand\labelenumi{R.F. \theenumi}
+    \item
+    \textit{Gestión de Trends}. El sistema deberá ser capaz de realizar llamadas al servicio de la API de Twitter para recopilar tendencias. En la API o su plataforma denominadas Trends o \ac{TT}.
+        \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
+        \item
+        \textit{Gestión de Países}. El sistema deberá ser capaz de manejar la petición concorde a diferentes países y almacenarlas adecuadamente.
+        \item
+        \textit{Gestión de Popularidad}. El sistema deberá ser capaz de manejar la respuesta y sus atributos. En este caso la popularidad.
+        }\end{enumerate}
+    \item
+}\end{enumerate}
