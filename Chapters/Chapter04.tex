@@ -93,7 +93,7 @@ Los componentes de la metodología Scrum son: \cite{rad2019fundamentos}
             \textit{El Sprint}: trata de un tramo de tiempo fijo, que puede llegar a ser entre una y cuatro semanas, durante el cual el producto que se este desarrollando añade valor gradualmente, de manera que al final de cada sprint el cliente pueda tener una clara visión del producto.
     
             \item
-            \textit{La planificación del Sprint (SprintPlanning)}: es una reunión que se lleva a cabo al comienzo o inicio de cada sprint para planificar el trabajo que se realizará a lo largo del sprint.
+            \textit{La planificación del Sprint (Sprint Planning)}: es una reunión que se lleva a cabo al comienzo o inicio de cada sprint para planificar el trabajo que se realizará a lo largo del sprint.
     
             \item
             \textit{Scrum Diario (Dailys)}: reuniones diarias de corta duración, en estas reuniones los miembros del equipo discuten y dialogan el trabajo realizado en el día anterior y el trabajo que se realizará en el día de la reunión.
@@ -102,7 +102,7 @@ Los componentes de la metodología Scrum son: \cite{rad2019fundamentos}
             \textit{Revisión del Sprint (Sprint Review)}: una reunión donde cada miembro del equipo presenta lo que ha realizado a lo largo del sprint y lo que debería cambiar o mejorar en el producto para el próximo sprint.
 
             \item
-            \textit{Retrospectiva del Sprint (SprintRetrospective)}: reuniones con la intención de analizar el trabajo en equipo y discutir áreas para mejorar o colaborar como equipo para el próximo sprint.
+            \textit{Retrospectiva del Sprint (Sprint Retrospective)}: reuniones con la intención de analizar el trabajo en equipo y discutir áreas para mejorar o colaborar como equipo para el próximo sprint.
     
         \end{itemize}
 
@@ -111,10 +111,10 @@ Los componentes de la metodología Scrum son: \cite{rad2019fundamentos}
     
         \begin{itemize}
             \item
-            \textit{El Backlog del Producto (ProductBacklog)}: contienen todas las historias de usuario, pero no evalúan el proyecto, y su gestión o responsabilidad recae en el Dueño del Producto.
+            \textit{El Backlog del Producto (Product Backlog)}: contienen todas las historias de usuario, pero no evalúan el proyecto, y su gestión o responsabilidad recae en el Dueño del Producto.
     
             \item
-            \textit{El Backlog del Sprint (SprintBacklog)}: historias de usuario que contienen estimaciones y planes a realizar en el sprint.
+            \textit{El Backlog del Sprint (Sprint Backlog)}: historias de usuario que contienen estimaciones y planes a realizar en el sprint.
     
             \item
             \textit{Incremento}: es el producto que se produce o ocurre al final del sprint.
@@ -163,7 +163,7 @@ Es necesario estudiar el entorno y a los posibles usuarios que necesiten de nues
 \caption[Primer caso de estudio de entorno]{Primer caso de estudio de entorno.}\label{table:1-entorno-persona}
 \end{table}
 
-En este primer caso necesitamos que la aplicación sea capaz de resumir información de tendencias diarias y que a la vez no sea atosigante o que agobie con demasiada cantidad de información, por ende tiene que ser información simple y finita. La posible solución más óptima es organizar tendencias diarias en un \textit{top} o una clasificación de diez tendencias más popular ocurridas a lo largo del día. Además esto se puede guardar por semanas para que el usuario no tenga la obligación de entrar a la web diariamente.
+En este primer caso necesitamos que la aplicación sea capaz de resumir información de tendencias diarias y que a la vez no sea atosigante o que agobie con demasiada cantidad de información, por ende tiene que ser información simple y finita. La posible solución más óptima es organizar tendencias diarias en un \textit{top} o una clasificación de diez tendencias más populares ocurridas a lo largo del día. Además esto se puede guardar por semanas para que el usuario no tenga la obligación de entrar a la web diariamente.
 
 \vspace{0.3cm}
 
@@ -218,7 +218,7 @@ Realmente este tipo de páginas no indagan en la explicación del contenido de u
 
 Esto puede llegar a ser información útil si solo quieres saber datos sobre el comportamiento de la tendencia a lo largo de 24 horas. En el caso de nuestra aplicación, aparte de dar datos sobre el comportamiento de la tendencia, tendrá el objetivo de explicar el propósito de la tendencia.
 
-\subsection{Estudio competitivo técnico}
+\subsection{Estudio competitivo técnico}\label{sub:estudio-competitivo-tecnico}
 
 Actualmente las librerías más populares sobre recopilación de tendencias actuales son Tweepy y Pytrends, ambas programadas en el lenguaje Python. Dichas librerías distan de ser perfectas, pero cada una tiene características de carácter diferencial.
 
@@ -306,9 +306,12 @@ En cuanto a los aspectos que se deberán tratar a la hora de definir las caracte
     Otro factor a tener en cuenta es el plan de peticiones que ofrece Twitter, el cual es muy limitado.
 \end{itemize}
 
-\chapter{Requisitos del sistema}
-Gracias a los estudios y conclusiones realizadas en el capitulo anterior, se puede detallar de una manera más sencilla los siguientes requerimientos.
-\section{Requisitos Funcionales}
+\newpage
+
+\section{Requisitos del sistema}
+Gracias a los estudios y conclusiones realizadas en el capitulo anterior, se puede detallar de una manera más sencilla los siguientes requerimientos o requisitos. Los requerimientos funcionales funcionan como servicios que puede prestar el sistema. Mientras que los requerimientos no funcionales especifican más bien la fiabilidad o el comportamiento de este.
+
+\subsection{Requisitos Funcionales}
 
 \begin{enumerate}
     { \renewcommand\labelenumi{R.F. \theenumi}
@@ -317,8 +320,738 @@ Gracias a los estudios y conclusiones realizadas en el capitulo anterior, se pue
         \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
         \item
         \textit{Gestión de Países}. El sistema deberá ser capaz de manejar la petición concorde a diferentes países y almacenarlas adecuadamente.
+            \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+            \item
+            \textit{Búsqueda por WOEID}. El sistema deberá ser capaz de buscar los diferentes países por el identificador que provee Yahoo y que utiliza la plataforma de Twitter. En este caso se denominan WOEIDs.
+            }\end{enumerate}
         \item
-        \textit{Gestión de Popularidad}. El sistema deberá ser capaz de manejar la respuesta y sus atributos. En este caso la popularidad.
+        \textit{Gestión de la Fecha}. El sistema deberá ser capaz de manejar la respuesta generada por Twitter y poder diferenciarla por fecha, bajo el formato de yy-mm-dd.
+        \item
+        \textit{Limpieza de Trends}. El sistema deberá poder limpiar los Trends repetidos. Ya que la mayoría de las veces Twitter no reconoce el mismo \ac{TT}, casos como el uso de tilde, mayúsculas o si son una sucesión de varias palabras. Por ejemplo, «Balón», «balón», «balon» y «Balón de Oro» se referirán a la misma tendencia, pero Twitter los trata como Trends diferentes con datos respectivos diferentes.
+        \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+            \item
+            \textit{Preferencias de Limpieza}. El sistema preferirá un nombre de tendencias más largo y por defecto si son iguales, preferirá el que tenga más popularidad.
+            }\end{enumerate}
+        \item
+        \textit{Ordenación de los Trends}. El sistema deberá ser capaz de ordenar los \ac{TT} bajo el atributo del volumen de popularidad proporcionado por Twitter.
+        \item
+        \textit{Historial Inteligente}. Además de guardar los Trends ordenados, al usuario le será importante que se guarden y se vayan comparando los Trends viejos y los nuevos (mediante el atributo de la popularidad).
         }\end{enumerate}
     \item
+    \textit{Gestión de Popularidad}. El sistema deberá ser capaz de guardar el atributo del volumen de popularidad en una lista, que fue anteriormente proporcionado por Twitter.
+    \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
+        \item
+        \textit{Cálculo de Media}. El sistema deberá poder sacar la media o la popularidad promedio a partir de la lista guardada anteriormente.
+        \item
+        \textit{Cálculo de Moda}. El sistema deberá poder sacar la moda o la popularidad más grande a partir de la lista guardada anteriormente.
+        \item
+        \textit{Gestión de Hora}. El sistema tiene que guardar en una lista la hora a la que se ha calculado el valor de la popularidad.
+        \item
+        \textit{Gestión de Gráfico}. Se deberá proporcionar un gráfico a partir de los valores calculados anteriormente. Proporcionado en formato de área.
+        \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+            \item
+            \textit{Eje X}. Se deberá proporcionar la lista de la hora a la que se ha calculado la popularidad como eje X del gráfico.
+            \item
+            \textit{Eje Y}. Se deberá proporcionar la lista del vector de popularidad como el eje Y del gráfico.
+            \item
+            \textit{Análisis del Gráfico}. Además del gráfico visual, se deberan proporcionar datos de valor. En este caso, el primer dato calculado y el último, además de mostrar la hora de su calculo.
+            }\end{enumerate}
+        }\end{enumerate}
+    \item
+    \textit{Gestión de Tweets}. El sistema deberá ser capaz de guardar como máximo alrededor de cien publicaciones o tweets de usuarios diferentes.
+    \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
+        \item
+        \textit{Filtrado de Tweets}. Se debe filtrar los tweets mediante la API de Twitter. Primero que las publicaciones tengan un nº mínimo de interacciones y que a la vez sean recientes, luego por el lenguaje del país y que sean publicaciones originales no repetidas.
+        \item
+        \textit{Limpieza de Tweets}. Se debe limpiar los tweets como los nombres de usuarios, enlaces u otros carácteres que complicarían el análisis del texto.
+        \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+            \item
+            \textit{Gestion de Stop Words}. El sistema deberá diferenciar las palabras significativas de las que no, frecuentemente denominadas como \textit{stop words} también llamadas palabras vacías o palabras comunes, son palabras que no suelen aportar significado a la hora de analizar textos. Cada idioma tiene su propia lista de \textit{stop words}.
+            }\end{enumerate}
+        }\end{enumerate}
+        \item
+        \textit{Clasificación de Palabras y Gestión de Keywords}. Al tener un conjunto de palabras significativas, el sistema deberá disponerlas al usuario como un top o clasificación ordenadas por el número de repeticiones en el texto. Por otro lado, el sistema deberá extraer \textit{keywords} relevantes del conjunto de tweets mediante un algoritmo de extracción.
+        \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
+            \item
+            \textit{Filtrado de Keywords}. Se deberán eliminar \textit{keywords} parecidas o repetidas.
+            \item
+            \textit{Gestión de Gráfico}. Se deberá proporcionar un gráfico a partir de los valores calculados anteriormente. Mostrado como un gráfico de tipo barras radial.
+            \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+                \item
+                \textit{Conjunto de Datos}. El conjunto de datos será proporcionado por la clasificación de seis palabras más repetidas de los tweets recogidos. Además deberán representarse como un porcentaje.
+                }\end{enumerate}
+            }\end{enumerate}
+        \item
+        \textit{Gestión de Sentimiento Genral}. Al tener un conjunto de palabras significativas, el sistema deberá disponerlas al usuario como un sentimiento general, clasificando el conjunto de palabras como positivo, negativo o neutral.
+        \begin{enumerate}{\renewcommand{\labelenumii}{R.F. \arabic{enumi}.\arabic{enumii}}
+            \item
+            \textit{Gestión de Gráfico}. Se deberá proporcionar un gráfico a partir de los valores calculados anteriormente. Mostrado como un gráfico de tipo burbujas con eje X y eje Y.
+            \begin{enumerate}{\renewcommand{\labelenumiii}{R.F. \arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+                \item
+                \textit{Eje X}. Este eje representará el sentimiento general de las publicaciones o tweets.
+                \item
+                \textit{Eje Y}. Este eje representará la relación con la clasificación de palabras, calculadas anteriormente, de las publicaciones o tweets.
+                \item
+                \textit{Tamaño de las Burbujas}. Se representará un tamaño mayor o menor, en base a la popularidad de los tweets o las publicaciones.
+                }\end{enumerate}
+            }\end{enumerate}
+        \item
+        \textit{Gestión de Noticias}. Se deberán proporcionar tres noticias adecuadas a la tendencia. Se buscarán noticias parecidas gracias al nombre y las \textit{keywords} relacionadas a la tendencia.
+        \item
+        \textit{Gestión de Rutas}. El sistema deberá disponer de rutas de navegación por cada país y fecha correspondiente a las tendencias.
+        \item
+        \textit{Sistema de Búsqueda}. El sistema deberá disponer de un sistema de búsqueda que proporcione tópicos y datos. 
+        \item
+        \textit{Gestión de Guardado}. El sistema deberá poder guardar las tendencias y que el usuario pueda acceder a diferentes países o fechas.
 }\end{enumerate}
+
+\subsection{Requisitos No Funcionales}
+
+\begin{enumerate}
+    { \renewcommand\labelenumi{R.N. \theenumi}
+    \item
+    \textit{Diseño}. El diseño debe ser sencillo, minimalista, pero a la vez poder dar toda la información que el usuario requiera. Además debe ser \textit{responsive}, enfocada en el uso móvil.
+    \item
+    \textit{Disponibilidad}. El sistema debe intentará estar disponible siempre y actualizar el contenido relevante cada hora. Confiando en \ac{PaaS} a la hora de construir, correr y mantener la aplicación.
+    \item
+    \textit{Arquitectura de capas}. El sistema deberá tener una base de datos, una capa de negociación o gestión y por último una capa de presentación o interfaz.
+    \item
+    \textit{Sistema de Logs}. El sistema deberá tener un sistema de Logs, el cual recopile información fundamental o registros de la actividad del servidor.
+    \item
+    \textit{Tests}. El sistema deberá estar \textit{testeado} para poder comprobar su correcto funcionamiento. Además tendrá reglas de escritura de código especificas, considerado como buenas practicas para dicho lenguaje de programación.
+}\end{enumerate}
+
+\newpage
+
+\section{Product Backlog}
+Después de listar los distintos requisitos, podemos visualizar más fácilmente la lista de Historias de Usuario que se trabajará y desarrollará posteriormente. La siguiente tabla contiene las diferentes Historas de Usuario, donde la estimación del esfuerzo (E) está expresada mediante los Puntos de Historia (1 a 10) y la prioridad (P) representada del 1 a 3, siendo el 1 el más prioritario para el Dueño del Producto, es decir, los tutores.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 1  & \multicolumn{1}{p{3in}|}{Cualquier usuario puede usar la aplicación sin necesidad de registrarse.}   & 1 & 1  \\ \hline
+H.U. 2  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares por defecto.} & 5  & 1  \\ \hline
+H.U. 3  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar el país como parámetro.} & 5  & 1  \\ \hline
+H.U. 4  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar la fecha como parámetro.} & 5  & 1  \\ \hline
+H.U. 5  & \multicolumn{1}{p{3in}|}{El usuario puede buscar sus propios tópicos y visualizarlos del mismo modo que las tendencias.} & 4  & 2  \\ \hline
+H.U. 6  & \multicolumn{1}{p{3in}|}{El usuario debe saber, por medio de alertas, si el servicio o los parámetros no han funcionado.} & 3  & 3  \\ \hline
+H.U. 7  & \multicolumn{1}{p{3in}|}{El usuario tiene que poder navegar intuitivamente, es decir por medio de gestos de \textit{scroll}, por la página.} & 7  & 1  \\ \hline
+H.U. 8  & \multicolumn{1}{p{3in}|}{El usuario debe poder analizar datos de interés sobre la popularidad.} & 8  & 1  \\ \hline
+H.U. 9  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las palabras más repetidas o comunes mediante un porcentaje, a partir de los tweets recogidos referentes a la tendencia.} & 8  & 1  \\ \hline
+H.U. 10  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las \textit{keywords}, a partir de los tweets recogidos referentes a la tendencia.} & 8  & 1  \\ \hline
+H.U. 11  & \multicolumn{1}{p{3in}|}{El usuario puede analizar los sentimientos generales mediante un porcentaje mostrado.} & 9  & 2  \\ \hline
+H.U. 12  & \multicolumn{1}{p{3in}|}{El usuario debe poder ver tres noticias más actuales relacionadas con la tendencia y poder acceder a ellas.} & 10  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Historias de Usuario]{Títulos de Historias de Usuario.}
+\end{table}
+
+\newpage
+
+Además algunas Historias de Usuario pueden tener diferentes subniveles, como se detalla en la siguiente tabla.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 8.1  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar la popularidad que está teniendo la tendencia por medio de una gráfica de área.} & 8  & 1  \\ \hline
+H.U. 9.1  & \multicolumn{1}{p{3in}|}{El usuario verá los datos representados mediante un gráfico de radial de barras.} & 8  & 1  \\ \hline
+H.U. 11.1  & \multicolumn{1}{p{3in}|}{El usuario debe poder ver los sentimientos generales, a partir de los tweets recogidos referentes a la tendencia, mediante una gráfica de burbujas.} & 9  & 2  \\ \hline
+\end{tabular}
+\caption[Subniveles de Títulos de Historias de Usuario]{Subniveles de Títulos de Historias de Usuario.}
+\end{table}
+
+\newpage
+
+\section{Sprint Backlog}
+Quedando los \textit{Product Backlog} concluidos, ahora podemos dividirlos en los distintos \textit{Sprint} acordados previamente.
+
+\subsection{Sprint 1}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 1  & \multicolumn{1}{p{3in}|}{Cualquier usuario puede usar la aplicación sin necesidad de registrarse.}   & 1 & 1  \\ \hline
+H.U. 6  & \multicolumn{1}{p{3in}|}{El usuario debe saber, por medio de alertas, si el servicio o los parámetros no han funcionado.} & 3  & 3  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 1]{Títulos del Sprint 1.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 1}} & \multicolumn{3}{p{2.7in}|}{Cualquier usuario puede usar la aplicación sin
+necesidad de registrarse.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario debe poder entrar a la página web y poder visualizar su contenido sin ningún tipo de restricción. Esto debido a que el contenido aportado por la aplicación web debe centrarse al público general.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 1} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Entrar a cualquier URL dinámico de la pagina y poder obtener una respuesta.
+        \item Ante un error de carga de contenido o una URL mal escrita, el usuario deberá saber el error específico.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Instalar Vue.js, sus dependencias y el enrutador.
+        \item Instalar un lint adecuado para Vue.
+        \item Crear rutas y composiciones que devuelvan una página con contenido.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+        \item Tener en cuenta rutas y errores por defecto.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 1]{Descomposición de la Historia de Usuario 1.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 6}} & \multicolumn{3}{p{2.7in}|}{El usuario debe saber, por medio de alertas, si el
+servicio o los parámetros no han funcionado.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario debe poder entrar a la página web y poder si está funcionando o no. En caso de fallo, deberá poder ver un mensaje de error propiamente explicado el fallo en concreto.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 3} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 3} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Poder entrar a diferentes rutas por erróneas o cuando el servicio esté caído y diferenciar diferentes errores.
+        \item Diferenciar errores como la carga de contenido, el propio funcionamiento del servidor o contenido erróneo.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Crear rutas por defecto, con alertas definidas para diferentes tipos de errores.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+        \item Tener en cuenta todos los parámetros a la hora de realizar peticiones al servidor, como el parámetro de \textit{status} de una petición.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 6]{Descomposición de la Historia de Usuario 6.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 2}\label{subs:sprint-2}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 2  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares por defecto.}   & 5 & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 2]{Títulos del Sprint 2.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 2}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar las diez tendencias más populares por defecto.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario debe poder visualizar el contenido de tendencias de un país en el día actual en la página de defecto, sin tener que poner ningún parámetro.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 5} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Entrar a la página web por defecto que haya una petición correcta al servidor.
+        \item Que el servidor devuelva las tendencias de un país y fecha del día actual.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Instalar Tweepy, sus dependencias y aprender las diferentes consultas a la API de Twitter.
+        \item Filtrar las tendencias parecidas o iguales. Diferenciando tildes, minúsculas, mayúsculas o simplemente frases más largas.
+        \item Manejar las diferentes entidades a la hora de construir el contenido a devolver para el usuario.
+        \item Manejar una Base de Datos Mongo y definir distintos módulos para su correcto funcionamiento.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+        \item La Base de Datos se tendrá que actualizar cada hora.
+        \item Al momento de actualizar la Base de Datos se debe realizar una Unión y Diferencia Simétrica de los datos viejo y nuevos. Con la Unión se actualizan los datos viejos y con la Diferencia Simétrica, agregamos los datos nuevos junto a los viejos.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 2]{Descomposición de la Historia de Usuario 2.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 3}
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 3  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar el país como parámetro.} & 5  & 1  \\ \hline
+H.U. 4  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar la fecha como parámetro.} & 5  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 3]{Títulos del Sprint 3.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 3}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar el país como parámetro.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario debe poder entrar a la página web y poder visualizar el contenido, aportando el parámetro del país donde quiera buscar la tendencia.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 5} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Entrar al URL dinámico de la página como país como parámetro y que el servidor devuelva el objeto correspondiente.
+        \item Ante un error de carga de contenido o una URL mal escrita, el usuario deberá saber el error específico.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Configuración de respectivos enrutadores. Tanto en la parte Front-end y Back-end.
+        \item Se deben poder buscar en la Base de Datos por países, con su fecha correspondiente. De modo que ya deben haber objetos creados con país como valor identificativo.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item
+    Ninguna.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 3]{Descomposición de la Historia de Usuario 3.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 4}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar el país como parámetro.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario debe poder visualizar las diez tendencias más populares, pudiendo seleccionar la fecha como parámetro.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 5} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Entrar al URL dinámico de la página como fecha como parámetro y que el servidor devuelva el objeto correspondiente.
+        \item Ante un error de carga de contenido o una URL mal escrita, el usuario deberá saber el error específico.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Configuración de respectivos enrutadores. Tanto en la parte Front-end y Back-end.
+        \item Se deben poder buscar en la Base de Datos por fecha, con su país correspondiente. De modo que ya deben haber objetos creados con fecha como valor identificativo.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item
+    Ninguna.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 4]{Descomposición de la Historia de Usuario 4.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 4}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 5  & \multicolumn{1}{p{3in}|}{El usuario puede buscar sus propios tópicos y visualizarlos del mismo modo que las tendencias.} & 4  & 2  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 4]{Títulos del Sprint 4.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 5}} & \multicolumn{3}{p{2.7in}|}{El usuario puede buscar sus propios tópicos y visualizarlos del mismo modo que las tendencias.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario puede buscar sus propios tópicos, mediante un buscador general, y visualizarlos del mismo modo que las tendencias. Con las mismas características que las tendencias, menos la popularidad, que solo se puede calcular si es una tendencia, un dato proveniente de Twitter.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 4} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 2} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Que el usuario identifique el buscador y pueda escribir sus propios tópicos que desee buscar.
+        \item Que el usuario pueda cambiar de país como parámetro al buscador para los tópicos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño para el buscador en Front-end.
+        \item Adaptar la ruta correspondiente en forma de \textit{query} y que el servidor sea capaz de procesarla.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El tópico no se guarda en la Base de Datos, sino que se devuelve cada vez que se inicia una búsqueda.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 5]{Descomposición de la Historia de Usuario 5.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 5}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 7  & \multicolumn{1}{p{3in}|}{El usuario tiene que poder navegar intuitivamente, es decir por medio de gestos de \textit{scroll}, por la página.} & 7  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 5]{Títulos del Sprint 5.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 7}} & \multicolumn{3}{p{2.7in}|}{El usuario tiene que poder navegar intuitivamente, es decir por medio de gestos de \textit{scroll}, por la página.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: El usuario tiene que poder navegar intuitivamente. Tanto haciendo \textit{scroll} verticalmente o horizontalmente por la página web. Además el contenido debe desplazarse automáticamente al centro de la pantalla, ocupando el mayor tamaño de espacio disponible. Todo esto por medio de gestos, tanto en una pantalla grande o en un móvil.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 7} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Que el usuario pueda hacer \textit{scroll} verticalmente y el contenido se mueva verticalmente dependiendo del gesto del usuario.
+        \item Que el usuario pueda hacer \textit{scroll} horizontalmente y el contenido se mueva horizontalmente dependiendo del gesto del usuario.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end. Esto se hará gracias al \textit{framework} Tailwind CSS. Consiguiendo que el gesto del usuario sea un \textit{scroll} automático y el contenido se centre en medio de la pantalla siempre después de procesar cualquier gesto.
+        \item Adaptar Vue para que la página web pueda proporcionar contenido dinámico, es decir, un vector de tendencias que puede tener diferente tamaño cada vez que se haga una petición al servidor.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño, al ser de cartas o módulos es fácilmente adaptable, pero hay que tener en cuenta las diferente versiones de escritorio o móvil.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 7]{Descomposición de la Historia de Usuario 7.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 6}\label{subs:sprint-6}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 8  & \multicolumn{1}{p{3in}|}{El usuario debe poder analizar datos de interés sobre la popularidad.} & 8  & 1  \\ \hline
+H.U. 8.1  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar la popularidad que está teniendo la tendencia por medio de una gráfica de área.} & 8  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 6]{Títulos del Sprint 6.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 8}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder analizar datos de interés sobre la popularidad.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario serán datos de interés sobre la popularidad de la tendencia. Datos como la moda, la media y el primer o último dato calculado.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 8} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Que el usuario pueda informarse debidamente de la media o la popularidad promedio de la tendencia.
+        \item Que el usuario pueda informarse debidamente de la moda o a popularidad más grande alcanzada de la tendencia.
+        \item Que el usuario pueda informarse debidamente del primer y último volumen de popularidad calculados de la tendencia.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end al diseño de la carta y desarrollar funciones para que el número tenga un separador de millares para una lectura más fácil.
+        \item Crear el modelo correspondiente en la Base de Datos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item Ninguna.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 8]{Descomposición de la Historia de Usuario 8.}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 8.1}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar la popularidad que está teniendo la tendencia por medio de una gráfica de área.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será la gráfica de área que representará la propia popularidad de la tendencia. El eje X será la hora a la que se ha calculado la popularidad y el eje Y será la popularidad de la tendencia en cuestión.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 8} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item Que el usuario pueda informarse debidamente con el contenido gráfico sobre la popularidad de una tendencia en un momento dado.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end. Gracias a la librería ApexCharts.js, podremos mostrar al usuario un gráfico solamente necesitando dos listas, el eje X y el eje Y que habrán sido previamente calculados.
+        \item Se adaptará el gráfico al diseño de la carta, además se apagará toda la interactividad con él porque su función solo es gráfica.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive}, afectando también al gráfico.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 8.1]{Descomposición de la Historia de Usuario 8.1.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 7}\label{subs:sprint-7}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 9  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las palabras más repetidas o comunes mediante un porcentaje, a partir de los tweets recogidos referentes a la tendencia.} & 8  & 1  \\ \hline
+H.U. 9.1  & \multicolumn{1}{p{3in}|}{El usuario verá los datos representados mediante un gráfico de radial de barras.} & 8  & 1  \\ \hline
+H.U. 10  & \multicolumn{1}{p{3in}|}{El usuario debe poder visualizar las \textit{keywords}, a partir de los tweets recogidos referentes a la tendencia.} & 8  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 7]{Títulos del Sprint 7.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 9}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar las palabras más repetidas o comunes, a partir de los tweets recogidos referentes a la tendencia.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será visualizar las palabras más repetidas o comunes de una tendencia. Mostrado en porcentaje de aparición respecto a todas las publicaciones o tweets.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 8} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse debidamente de las palabras más repetidas a través de cálculos de porcentaje sobre las apariciones de las palabras en los tweets.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end y que conjunte con los demás elementos.
+        \item Filtrar las palabras significativas, eliminando las que pertenezcan al grupo de las \textit{stop words} o palabras vacías, es decir las que no suelen aportar significado a la hora de analizar textos. Posteriormente sólo se enseñaran las seis palabras más comunes.
+        \item Crear el modelo correspondiente en la Base de Datos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive}.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 9]{Descomposición de la Historia de Usuario 9.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 9.1}} & \multicolumn{3}{p{2.7in}|}{El usuario verá los datos representados mediante un gráfico de radial de barras.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Otro contenido único, que aportará más significado a la hora de visualizar las palabras más repetidas o comunes de una tendencia será un gráfico de radial de barras, donde cada barra representará la palabra y el porcentaje de sus repeticiones.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 8} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse debidamente de las palabras más repetidas a través de un gráfico de radial de barras.
+        \item El usuario debe poder comparar todas las palabras repetidas. También saber cual es la que tiene más valor y la que menos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end, gracias a la librería ApexCharts.js. 
+        \item Se debe configurar el gráfico de tal manera, que cada palabra y su valor tengan una representación única.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive}, afectando también al gráfico.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 9.1]{Descomposición de la Historia de Usuario 9.1.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 10}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder visualizar las \textit{keywords}, a partir de los tweets recogidos referentes a la tendencia.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será visualizar las \textit{keywords} más relevantes sobre los textos recogidos de las publicaciones o tweets.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 8} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse de cuales son las \textit{keywords} más relevantes de una tendencia.
+        \item Las \textit{keywords} deben expresar al usuario una perspectiva de lo que es relevante o de importancia en el conjunto de las publicaciones o tweets de la tendencia.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Adaptar el diseño en Front-end.
+        \item Configurar el algoritmo \ac{YAKE}, adaptándolo a extraer un conjunto de textos que serán parecidos, ya que son publicaciones sobre un mismo tópico.
+        \item Filtrar el texto antes de extraer las \textit{keywords} con el algoritmo \ac{YAKE}.
+        \item Filtrar las \textit{keywords} parecidas o iguales, luego enseñar solo las tres más relevantes.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive}.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 10]{Descomposición de la Historia de Usuario 10.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 8}\label{subs:sprint-8}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.6in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 11  & \multicolumn{1}{p{3in}|}{El usuario puede analizar los sentimientos generales mediante un porcentaje mostrado.} & 9  & 2  \\ \hline
+H.U. 11.1  & \multicolumn{1}{p{3in}|}{El usuario debe poder ver los sentimientos generales, a partir de los tweets recogidos referentes a la tendencia, mediante una gráfica de burbujas.} & 9  & 2  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 8]{Títulos del Sprint 8.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 11}} & \multicolumn{3}{p{2.7in}|}{El usuario puede analizar los sentimientos generales mediante un porcentaje mostrado.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será visualizar el sentimiento general que tienen los textos recogidos de las publicaciones o tweets. En este caso, será mostrado mediante un porcentaje.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 9} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 2} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse de cual es el sentimiento general de una tendencia y saber cual es el porcentaje correspondiente de los sentimientos positivos, negativos y neutrales.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Mostrar al usuario tres tipos de porcentaje (positivos, negativos y neutrales). El porcentaje será calculado mediante el tamaño de la burbuja, ya que el tamaño o radio representa su relevancia.
+        \item Crear el modelo correspondiente en la Base de Datos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive} y adaptarse al contenido gráfico con sus colores correspondientes.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 11]{Descomposición de la Historia de Usuario 11.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} |}
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 11.1}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder ver los sentimientos generales, a partir de los tweets recogidos referentes a la tendencia, mediante una gráfica de burbujas.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será visualizar el sentimiento general que tienen los textos recogidos de las publicaciones o tweets. El análisis de sentimientos será basados en reglas de léxicos y se mostrará mediante un gráfico.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 9} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 2} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse de cual es el sentimiento general de una tendencia de una manera visual o gráfica. Se le mostrará al usuario un gráfico de burbujas.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Configurar la herramienta \ac{VADER} y adaptar el léxico de cada país.
+        \item Mostrar al usuario tres tipos de burbuja (Positivo, Negativo y Neutral). Cada burbuja tendrá un tamaño diferente dependiendo de su relevancia, mediante la popularidad de la publicación o si hay muchos sentimientos parecidos.
+        \item Mostrar un posicionamiento de la burbuja relevante. El eje X será el sentimiento general de una publicación. Mientras el eje Y representará las relación con la clasificación de palabras relevantes, que fueron calculadas anteriormente.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive}.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 11.1]{Descomposición de la Historia de Usuario 11.1.}
+\end{table}
+
+\newpage
+
+\subsection{Sprint 9}\label{subs:sprint-9}
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{| >{\centering\arraybackslash}m{0.55in} | >{\centering\arraybackslash}m{3in} | >{\centering\arraybackslash}m{0.1in} | >{\centering\arraybackslash}m{0.1in} |}
+\hline
+\rowcolor{RoyalBlue} 
+\textbf{ID} & \textbf{Titulo de la Historia} & \textbf{E} & \textbf{P} \\ \hline
+H.U. 12  & \multicolumn{1}{p{3in}|}{El usuario debe poder ver tres noticias más actuales relacionadas con la tendencia y poder acceder a ellas.} & 10  & 1  \\ \hline
+\end{tabular}
+\caption[Títulos de Sprint 9]{Títulos del Sprint 9.}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{ >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} >{\centering\arraybackslash}m{0.9in} }
+\hline
+\multicolumn{1}{|p{0.9in}|}{\cellcolor{RoyalBlue}\textbf{H.U. 12}} & \multicolumn{3}{p{2.7in}|}{El usuario debe poder ver tres noticias más actuales relacionadas con la tendencia y poder acceder a ellas.} \\ \hline
+\multicolumn{4}{|p{3.8in}|}{\textbf{Descripción}: Uno de los contenidos principales sobre una tendencia para el usuario será visualizar las distintas noticias relevantes que pueden tener alguna relación las tendencias.} \\ \hline
+\multicolumn{2}{|p{1.8in}|}{\textbf{Estimación}: 10} & \multicolumn{2}{p{1.8in}|}{\textbf{Prioridad}: 1} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Pruebas de aceptación}:
+    \begin{itemize}
+        \item El usuario debe informarse de tres noticias con editoriales diferentes, pero que tengan afinidad respecto a la tendencia.
+        \item El usuario podrá ver una foto, un titulo, la editorial, la fecha de publicación y algún texto sobre el articulo o noticia.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Tareas}:
+    \begin{itemize}
+        \item Desarrollar \textit{web scraping} o raspado web, una técnica utilizada para extraer información de sitios web. En nuestro caso se utilizará para extraer noticias relevantes desde Google News y posteriormente desde cada página del articulo.
+        \item Se buscarán artículos relacionado mediante el nombre de la tendencia y algunas palabras relevantes que se extrajeron anteriormente, con el objetivo de precisar la búsqueda.
+        \item Crear el modelo correspondiente en la Base de Datos.
+    \end{itemize}
+} \\ \hline
+\multicolumn{4}{|p{3.6in}|}{\textbf{Observaciones}:
+    \begin{itemize}
+    \item El diseño tiene que ser \textit{responsive} y adaptarse al contenido, tanto con la foto o el texto.
+    \end{itemize}
+} \\ \hline
+\end{tabular}
+\caption[Descomposición de la Historia de Usuario 12]{Descomposición de la Historia de Usuario 12.}
+\end{table}
