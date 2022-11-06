@@ -148,6 +148,7 @@
 \definecolor{halfgray}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{supergray}{gray}{0.995} % chapter numbers will be semi transparent .5 .55 .6 .0
 %\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
 %\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 %\definecolor{Black}{cmyk}{0, 0, 0, 0}
@@ -690,8 +691,10 @@
 
 \makeatletter
     \newlistof{algorithms}{loa}{\listalgorithmcfname}%
-    \renewcommand*{\listalgorithmcfname}{Lisa de Algoritmos}%
-    \renewcommand*{\algorithmcfname}{Algorithm}%
+    \renewcommand*{\listalgorithmcfname}{Listado de Algoritmos}%
+    \renewcommand*{\algorithmcfname}{Algoritmo}%
+    \renewcommand*{\lstlistingname}{Código}% Listing -> Algorithm
+    \renewcommand*{\lstlistlistingname}{Listado de Códigos}% List of Listings -> List of Algorithms
     \renewcommand{\cftalgorithmspresnum}{\scshape\MakeTextLowercase}%
     \renewcommand{\cftalgorithmsfont}{\normalfont}%
     \renewcommand{\cftalgorithmspresnum}{\algorithmcfname~}%

@@ -47,11 +47,26 @@
     % List of Algorithms
     %*******************************************************
     %\phantomsection
+    \renewcommand{\algorithmcfname}{Algoritmo}
     \renewcommand{\listalgorithmcfname}{Listado de algoritmos}
+    %\refstepcounter{dummy}
+    %\addcontentsline{toc}{chapter}{\lstlistlistingname}
+    %\pdfbookmark[1]{\listalgorithmcfname}{loa}
+    %\lstlistofalgorithms
+
+    %\vspace{8ex}
+    %\newpage
+
+    %*******************************************************
+    % List of Codes
+    %*******************************************************
+    %\phantomsection
+    \renewcommand{\lstlistingname}{Código}% Listing -> Algorithm
+    \renewcommand{\lstlistlistingname}{Listado de Códigos}% List of Listings -> List of Algorithms
     \refstepcounter{dummy}
     %\addcontentsline{toc}{chapter}{\lstlistlistingname}
-    \pdfbookmark[1]{\listalgorithmcfname}{loa}
-    \lstlistofalgorithms
+    \pdfbookmark[1]{\lstlistlistingname}{loa}
+    \lstlistoflistings
 
     \vspace{8ex}
     \newpage
@@ -70,12 +85,16 @@
         \acro{TT}{\textit{trending topic}, «tendencia», «tema de tendencia» o «tema del momento»}
         \acro{PaaS}{\textit{plataforma as a service}, «plataforma como servicio»}
         \acro{YAKE}{\textit{Yet Another Keyword Extractor}}
+        \acro{RAKE}{\textit{Rapid Automatic Keyword Extraction}}
+        \acro{NLTK}{\textit{Natural Language Toolkit}}
         \acro{VADER}{\textit{Valence Aware Dictionary and sEntiment Reasoner}}
+        \acro{NLP}{\textit{Natural Language Processing}, «procesamiento de lenguajes naturales»}
         \acro{DOM}{\textit{Document Object Model}}
         \acro{API}{\textit{application programming interface}, «interfaz de programación de aplicaciones»}
         \acro{REST}{\textit{representational state transfer}, «transferencia de estado representacional»}
         \acro{HTTP}{\textit{Hypertext Transfer Protocol}, «Protocolo de Transferencia de Hipertexto»}
         \acro{JSON}{\textit{JavaScript Object Notation}, «notación de objeto de JavaScript»}
+        \acro{YAML}{\textit{YAML Ain't Markup Language}, «YAML no es un lenguaje de marcado»}
         \acro{CRUD}{\textit{Create, Read, Update and Delete}, «Crear, Leer, Actualizar y Borrar»}
         \acro{ASGI}{\textit{Asynchronous Server Gateway Interface}}
         \acro{WSGI}{\textit{Web Server Gateway Interface}}

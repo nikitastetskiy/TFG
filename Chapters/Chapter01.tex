@@ -13,7 +13,7 @@ Para podernos situarnos con más claridad, el estudio anual de IAB Spain nos ind
 
 \vspace{0.3cm}
 
-Estos datos nos dejan en evidencia el hecho de que el uso de estas herramientas, tales como el Internet y las redes sociales, van en aumento. Aunque no nos debería de asombrar, ya que la generalización y el uso del Internet y las redes sociales viene de mucho antes. En el año 2012 se realizó un estudio en el que se mostraba que las redes sociales pueden llegar a crear una dependencia más grande aun que el tabaco. \cite{Tabaco-Study}
+Estos datos nos dejan en evidencia el hecho de que el uso de estas herramientas, tales como el Internet y las redes sociales, van en aumento. Aunque no nos debería de asombrar, ya que la generalización y el uso del Internet y las redes sociales viene de mucho antes. En el año 2012 se realizó un estudio en el que se mostraba que las redes sociales pueden llegar a crear una dependencia aún más grande que el tabaco. \cite{Tabaco-Study}
 
 \vspace{0.3cm}
 
@@ -25,7 +25,7 @@ La solución más sencilla, pero drástica, puede llegar a ser abandonar las red
 
 \vspace{0.3cm}
 
-Ante tal necesidad de querer estar actualizados y a la vez querer saber cuando parar de consumir contenido, la solución que propongo es un consumo finito de contenido diario y lo más objetivo posible. Una aplicación web que aporte la información necesaria de las tendencias más destacables del día.
+Ante tal necesidad de querer estar actualizados y a la vez querer saber cuándo parar de consumir contenido, la solución que se propone en este texto es un consumo finito de contenido diario y lo más objetivo posible. Una aplicación web que aporte la información necesaria de las tendencias más destacables del día.
 
 \section{Objetivos}
 
@@ -34,83 +34,25 @@ La meta final de este proyecto es construir una aplicación web autosuficiente y
 
 \vspace{0.3cm}
 
-La información que se le brinda al usuario se basará en las tendencias del país seleccionado por él. A partir de las tendencias se deducirán datos, estadísticas, noticias y enlaces de interés.
+La información que se le brinda al usuario se basará en las tendencias del país y la fecha seleccionada por él. A partir de las tendencias se deducirán datos, información útil, estadísticas, noticias y enlaces de interés.
 
 \vspace{0.3cm}
 
-Toda esta información deberá albergar un carácter sencillo y deberá ser fácil de consumir, alejándose de la posibilidad de ser abrumante o atosigadora.
+La visualización de contenido que pretende tener esta página web, es un contenido presentado en forma de cartas o módulo de información finita. Los datos que se presentarán al usuario serán datos objetivos, como la popularidad que está teniendo la tendencia. La información útil que se pretende mostrar serán las palabras clave o más usadas relacionadas a la tendencia. También se pretende mostrar la opinión general de manera objetiva, esto se puede conseguir analizando los sentimientos de las publicaciones en relación a la tendencia. Por último, las noticias también albergarán contenido actual y relevante a la tendencia.
+
+\vspace{0.3cm}
+
+Toda esta información recolectada deberá albergar un carácter sencillo y deberá ser fácil de consumir, alejándose de la posibilidad de ser abrumante o atosigadora, como la de las redes sociales.
 
 \subsection{Objetivos específicos}
 
 \begin{itemize}
-\item El contenido que se le brinda al usuario debe de ser corto y finito, pero a la vez suficiente con el fin de informarse de manera adecuada.
-\item La tendencia que se aporta al usuario proviene de la API de Twitter y tiene que ser la más destacable de la red social.
+\item Se realizará un estudio sobre el diseño, la estructura y arquitectura más óptima al proyecto. Al igual que las distintas herramientas usadas en este.
+\item Se marcarán las pautas de unas buenas prácticas a la hora de realizar el desarrollo y las operaciones del proyecto.
+\item Se estudiarán las ventajas de recolectar las tendencias provenientes de la API de Twitter y se compararán con otros métodos destacables.
 \item La aplicación web debe de ser intuitiva y fácil de usar, el diseño debe ajustarse para el formato móvil.
-\item La estructura del proyecto deberá seguir el modelo API REST, siguiendo una arquitectura web por capas.
+\item El contenido que se le brinda al usuario debe de ser corto y finito, pero a la vez suficiente con el fin de informarse de manera adecuada.
 \item Cada contenido proporcionado para el usuario se brindará en un diseño de carta y ocupará el mayor espacio de pantalla posible. De esta manera se aprovecharán al máximo la información disponible, siendo esta una noticia, un dato de una estadística o un enlace de interés.
+\item Cada información recolectada dispondrá de un elemento gráfico y textual. La popularidad, las palabras más relevantes o los sentimientos generales se pueden expresar mediante una gráfica y también explicarse textualmente. Al igual que las noticias, cada noticia puede tener una imagen y una descripción.
+\item El usuario podrá navegar por dichas tendencias y estar \textit{actualizado} en cada momento del día, además podrá ver tendencias de otros días o países. Siempre respetando que el contenido sea finito, es decir no atosigante, y relevante o actual.
 \end{itemize}
-
-\newpage
-
-
-
-\section{Sección en proceso !!!}
-En esta sección se planificarán las tareas y los objetivos. Se crearán dos diagramas de Gantt, uno dónde se planifiquen los objetivos y uno final real. Los objetivos planteados son:
-\begin{itemize}
-\item Planificación y presupuesto.  DONE
-\item Estado del arte:  DONE
-\begin{itemize}
-    \item Dominio del problema a resolver   DONE
-    \item Metodologías y tecnologías de base que podrían usarse -> (Conclusión) DONE
-\end{itemize}
-\item Propuesta:
-\begin{itemize}
-    \item Metodología de desarrollo - SCRUM (profundidad) DONE
-    \item Analisis, requisitos e historias de usuario (Backlogs)
-    \item DevOps ? como metodologia
-\end{itemize}
-\item Diseño:
-\begin{itemize}
-    \item Explicación de la arquitectura usada, distintas capas y protocolos (diagramas y esquemas)
-    \item Diagrama de paquetes, clases, bocetos ...
-    \item Justificación API de Twitter (comparación con Pytrends) DONE antes
-    \item Integración continua
-    \begin{itemize}
-        \item Gestor de paquetes: poetry
-        \item Linter y Prettier
-        \item Mypy y flake8
-        \item GitHub Actions
-        \item Test y virtualización: GH Actions, tox
-        \item Uso de docker para test (usar comparativas - alpine) (Opcional)
-        \item Despliegue en Vercel (usar comparativas - netlify)
-    \end{itemize}
-    \item Justificación de pydantic de python
-    \item Justificación del micro-framework - FastAPI
-    \item Justificación de front end framework - Vue3.js
-    \item Justificación de TailwindCSS
-    \item Justificación de Apexcharts
-    \item Justificación de la base de datos MongoDB
-    \item Implementación de sistema de Logs (Opcional)
-    \item Prueba de prestaciones con uvicorn (Opcional)
-\end{itemize}
-\item Implementación:
-\begin{itemize}
-    \item Explicación del algoritmo que recoge trends de la API de Twitter
-    \item Explicación del algoritmo que recoge noticias a partir de los trends - Comparar con la api y scrapping
-    \item Explicación del algoritmo que recoge estadísticas del volumen de seguimiento (rango de tendencia)
-    \item Explicación del algoritmo que recoge estadísticas de las palabras más usadas en la tendencia y YAKE
-    \item Explicación del algoritmo que recoge estadísticas del sentimiento general de la tendencia (Vader) comparar con ML y texblob
-\end{itemize}
-    \item Conclusión
-    \item Trabajos futuros y Bibliografía
-\end{itemize}
-Preguntas a tutores:
-\begin{itemize}
-    \item ¿El resumen debería llevar sangría?
-    \item ¿Debería haber presupuesto en la parte del plan inicial?
-\end{itemize}
-Recordatorios:
-\begin{itemize}
-    \item Cambiar los HOLA
-\end{itemize}
-

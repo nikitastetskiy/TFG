@@ -1,9 +1,9 @@
 \chapter{Diseño}\label{ch:diseño}
 %************************************************
-En este capitulo se pretende abordar la principal tarea del diseño o la planificación de la estructura idónea sobre las necesidades que se han ido explicando en capítulos anteriores. Para ello se intentará plantear las decisiones tomadas desde un nivel alto, eligiendo la estructura o arquitectura correcta, bajando gradualmente hasta encajar todos los componentes, con el objetivo de obrar un sistema escalable y ágil que proporcione la solución a los problemas supuestos del cliente.
+En este capítulo se pretende abordar la principal tarea del diseño o la planificación de la estructura idónea sobre las necesidades que se han ido explicando en capítulos anteriores. Para ello se intentará plantear las decisiones tomadas desde un nivel alto, eligiendo la estructura o arquitectura correcta, bajando gradualmente hasta encajar todos los componentes, con el objetivo de obrar un sistema escalable y ágil que proporcione la solución a los problemas supuestos del cliente.
 
 \section{Arquitectura planteada}
-La necesidades que se han ido explicando en capítulos anteriores se pueden dividir en diferentes aplicaciones, funcionalidades o divisiones de capas. Cada aplicación debe funcionar cumpliendo un único objetivo, pero finalmente deben coaccionar como una sola aplicación para el usuario final. Las distintas funcionalidades que surgen ante las necesidades que se explicaron anteriormente se pueden dividir en tres tipos (operaciones de datos, su gestión y su visualización). Al tratar de construir una aplicación que requiere muchas capas horizontales independientes y a la vez que puedan interactuar entre ellas, el patrón de software que surge ante esta necesidad es el patrón arquitectónico en capas. Además de ser un patrón muy común en el ámbito web, es bastante sencillo de entender e implementar. Cada capa tiene un papel determinado y una responsabilidad específica dentro de la aplicación, dichas capas pueden cooperar e interactuar entre si, pero no dependen una de otra. Se debe saber que una capa de nivel superior puede interactuar con la capa de nivel inferior, pero no al revés. \cite{aqruitecturaMicrosoft}
+Las necesidades que se han ido explicando en capítulos anteriores se pueden dividir en diferentes aplicaciones, funcionalidades o divisiones de capas. Cada aplicación debe funcionar cumpliendo un único objetivo, pero finalmente deben coaccionar como una sola aplicación para el usuario final. Las distintas funcionalidades que surgen ante las necesidades que se explicaron anteriormente se pueden dividir en tres tipos (operaciones de datos, su gestión y su visualización). Al tratar de construir una aplicación que requiere muchas capas horizontales independientes y a la vez que puedan interactuar entre ellas, el patrón de software que surge ante esta necesidad es el patrón arquitectónico en capas. Además de ser un patrón muy común en el ámbito web, es bastante sencillo de entender e implementar. Cada capa tiene un papel determinado y una responsabilidad específica dentro de la aplicación, dichas capas pueden cooperar e interactuar entre sí, pero no dependen una de otra. Se debe saber que una capa de nivel superior puede interactuar con la capa de nivel inferior, pero no al revés. \cite{aqruitecturaMicrosoft}
 
 \vspace{0.3cm}
 
@@ -58,7 +58,7 @@ En cuanto a la plataforma como servicio que se ha elegido en este caso será Mon
 \end{figure}
 
 \subsection{Modelado de datos}
-El modelo de datos principal será compuesto por dos clases. Las dos clases harán referencia al mismo modelo pero tendrán dos conceptos diferentes, uno para objetos nuevos y otro para su actualización. De esta manera tenemos dos clases, las cuales se llaman \textit{Country} y \textit{CountryUpdate}. La diferencia es que la primera clase creará un id nuevo para cada objeto y la segunda no.
+El modelo de datos principal será compuesto por dos clases. Las dos clases harán referencia al mismo modelo, pero tendrán dos conceptos diferentes, uno para objetos nuevos y otro para su actualización. De esta manera tenemos dos clases, las cuales se llaman \textit{Country} y \textit{CountryUpdate}. La diferencia es que la primera clase creará un id nuevo para cada objeto y la segunda no.
 
 \vspace{0.3cm}
 
@@ -66,7 +66,11 @@ Ambas poseen los mismo atributos y entidades. Están formadas por país y fecha,
 
 \vspace{0.3cm}
 
-Muchos de los atributos pueden llegar a ser opcionales, como por ejemplo la imagen del articulo, la cual si no existe se cargará otra por defecto desde la interfaz. En el siguiente diagrama se puede visualizar el conjunto del modelado, aunque las diferentes entidades serán explicadas en la capa de dominio o negocio.
+Muchos de los atributos pueden llegar a ser opcionales, como por ejemplo la imagen del artículo, la cual si no existe se cargará otra por defecto desde la interfaz. En el siguiente diagrama se puede visualizar el conjunto del modelado, aunque las diferentes entidades serán explicadas en la capa de dominio o negocio.
+
+\vspace{0.3cm}
+
+Cabe mencionar el uso de la librería \textit{pydantic}, la cual me ha facilitado la implementación de estas clases. Proporciona le lectura y escritura de los \textit{BaseModel} y además, proporciona un decorador de clases de datos que crea (casi) clases de datos de Python estándar con análisis y validación de datos de entrada. Además, contiene funciones como la generación automática de archivos \ac{JSON}. \cite{pydantic-manual}
 
 \vspace{0.3cm}
 
@@ -156,7 +160,7 @@ Para poder representar debidamente la H.U. se debe ir calculando progresivamente
 \textit{date}: fecha de publicación de la noticia.  \\
 \textit{image}: imagen relacionada de la noticia.    \\
 \textit{summary}: texto relacionado de la noticia.    \\
-\textit{title}: titulo de la noticia.    \\
+\textit{title}: título de la noticia.    \\
 \textit{url}: enlace de la noticia.    \\
 \textit{source}: editorial de la noticia.
 
@@ -164,7 +168,7 @@ Para poder representar debidamente la H.U. se debe ir calculando progresivamente
 La capa de dominio o negocio permite la interacción entre la capa de base de datos y la capa de presentación. Es la capa encargada de gestionar tanto las distintas peticiones recibidas desde la capa de presentación, como los datos almacenados en la capa de base de datos. Comúnmente esta capa suele pertenecer a la parte Back-end del sistema.
 
 \subsection{Estudio técnico}
-Al plantear la aplicación en la capa de dominio o negocio, surgen ciertas pautas o normativas que conviene seguir. Surge la denominación \ac{API} para las interacciones que surgen entre la capa de presentación y la capa actual. Otra denominación que conviene saber es \ac{REST}, el cual es un conjunto de limites a la hora de implementar una \ac{API}. \cite{redahat-manual}
+Al plantear la aplicación en la capa de dominio o negocio, surgen ciertas pautas o normativas que conviene seguir. Surge la denominación \ac{API} para las interacciones que surgen entre la capa de presentación y la capa actual. Otra denominación que conviene saber es \ac{REST}, el cual es un conjunto de límites a la hora de implementar una \ac{API}. \cite{redahat-manual}
 
 \vspace{0.3cm}
 
@@ -207,7 +211,7 @@ En cuanto a la plataforma como servicio (\ac{PaaS}) he elegido Heroku, la cual t
 
 \vspace{0.3cm}
 
-Además otra ventaja crucial, la cual es requerida para el correcto funcionamiento de la aplicación, es que un proceso se ejecute cada determinado intervalo de tiempo. Esto es debido a que necesitamos que se actualice la información de las tendencias, por lo que localmente tendríamos que configurar un \textit{cron} ejecutando un \textit{script} de Python y en Heroku tenemos un \textit{Scheduler}, el cual tiene el mismo comportamiento. Dicho proceso ha sido configurado para que se ejecute cada hora y el \textit{script} en cuestión recopilará toda la información necesaria.
+Además, otra ventaja crucial, la cual es requerida para el correcto funcionamiento de la aplicación, es que un proceso se ejecute cada determinado intervalo de tiempo. Esto es debido a que necesitamos que se actualice la información de las tendencias, por lo que localmente tendríamos que configurar un \textit{cron} ejecutando un \textit{script} de Python y en Heroku tenemos un \textit{Scheduler}, el cual tiene el mismo comportamiento. Dicho proceso ha sido configurado para que se ejecute cada hora y el \textit{script} en cuestión recopilará toda la información necesaria.
 
 \vspace{0.3cm}
 
@@ -284,11 +288,11 @@ Al buscar el \textit{framework} idóneo para la visualización de la aplicación
 
 \vspace{0.3cm}
 
-Uno de los principales objetivos de la aplicación, que ya se había planteado antes, es que el contenido se pueda visualizar por medio de módulos o cartas. Por lo que al diseñar la propia aplicación, tendremos una vista principal y cada una de las cartas estará dividida en una subvista. Cada subvista tendrá sus propiedades, sus propias funciones y clases CSS. La mayoría de las clases estarán implementadas directamente a mano, menos las más básicas o convenientes ya que usaré el \textit{framework} TailwindCSS para agilizar el trabajo.
+Uno de los principales objetivos de la aplicación, que ya se había planteado antes, es que el contenido se pueda visualizar por medio de módulos o cartas. Por lo que, al diseñar la propia aplicación, tendremos una vista principal y cada una de las cartas estará dividida en una subvista. Cada subvista tendrá sus propiedades, sus propias funciones y clases CSS. La mayoría de las clases estarán implementadas directamente a mano, menos las más básicas o convenientes ya que usaré el \textit{framework} TailwindCSS para agilizar el trabajo.
 
 \vspace{0.3cm}
 
-En cuanto a la plataforma como servicio (\ac{PaaS}) para la capa de presentación me he decantado por Vercel, realmente tenía mucho parecido a otras plataformas como Netlify, aunque tras usar ambas plataformas he podido concluir que Vercel funciona más eficientemente y de una manera más simple. Además posee integración con Vue, lo cual me ha permitido exportar fácilmente el proyecto.
+En cuanto a la plataforma como servicio (\ac{PaaS}) para la capa de presentación me he decantado por Vercel, realmente tenía mucho parecido a otras plataformas como Netlify, aunque tras usar ambas plataformas he podido concluir que Vercel funciona más eficientemente y de una manera más simple. Además, posee integración con Vue, lo cual me ha permitido exportar fácilmente el proyecto.
 
 \begin{figure}[H]
     \centering
@@ -332,7 +336,7 @@ La ruta por defecto cargará como parámetro el país España y la fecha del dí
 Cada uno funcionan de una manera independiente, mediante eventos por click. Aunque si precisan de la información que hay en cada formulario, es decir, si el usuario cambia el parámetro país, entonces se carga una ruta con la fecha y el país seleccionado. Esto ocurre de la misma manera seleccionando la fecha o buscando un tópico, ambos necesitan la información del país seleccionado para procesar la ruta.
 
 \subsection{Transcurso de la Interfaz de Usuario}
-La vista principal es la única vista que se le llega mostrar al usuario, por lo que es importante mostrar el transcurso que ha tenido su propio diseño. Aunque como hemos explicado la vista principal se subidivide y cada subvista tiene sus propias clases de CSS, en español «Hojas de estilo en cascada». Cabe mencionar, que también se ha empleado una biblioteca que fue crucial llamada TailwindCSS.
+La vista principal es la única vista que se le llega mostrar al usuario, por lo que es importante mostrar el transcurso que ha tenido su propio diseño. Aunque como hemos explicado la vista principal se subdivide y cada subvista tiene sus propias clases de CSS, en español «Hojas de estilo en cascada». Cabe mencionar, que también se ha empleado una biblioteca que fue crucial llamada TailwindCSS.
 
 \begin{figure}[H]
     \centering
@@ -362,7 +366,7 @@ La vista principal es la única vista que se le llega mostrar al usuario, por lo
     \caption[Concepto del error en la visualización de parámetros]{Concepto del error en la visualización de parámetros.}\label{gfx:boceto-error}
 \end{figure}
 
-\subsection{Vista Principal}
+\subsection{Vista Principal}\label{subs:vista-principal}
 La vista principal contiene todas las subvistas y componentes necesarios para el funcionamiento de la interfaz. Cada subvista funciona como un componente esencial dentro de la vista principal. Al cargar correctamente los datos desde la capa de dominio o negocio, estos se representan en la vista principal y a la vez cada entidad se representa con una subvista diferente.
 
 \begin{figure}[H]
@@ -382,8 +386,8 @@ La Vista principal representa la visualización de la historia de usuario que fu
 
 También existen propiedades más complementarias como \textit{num} y \textit{rank}, para enumerar las tarjetas o cartas y el \textit{ranking} de la tendencia, respectivamente. Las funciones de alerta o los distintos atributos como \textit{loading}, existen para enriquecer las animaciones de la página y para mostrar el cuadro de dialogo que se ha mencionado anteriormente (\ref{gfx:boceto-error}). Finalmente, la función de \textit{encodeURL} codifica el nombre de la tendencia para redirigirlo a la plataforma Twitter mediante un enlace.
 
-\subsection{Subvista Popularidad}
-Esta subvista representa la visualización de las historias de usuario que fueron contempladas en el Sprint 6 (\ref{subs:sprint-6}). En ellas el usuario debe poder visualizar datos de interés sobre la popularidad y también un gráfica de área. La implementación de la gráfica se consigue mediante la librería ApexCharts.
+\subsection{Subvista Popularidad}\label{subs:vista-popu}
+Esta subvista representa la visualización de las historias de usuario que fueron contempladas en el Sprint 6 (\ref{subs:sprint-6}). En ellas el usuario debe poder visualizar datos de interés sobre la popularidad y también una gráfica de área. La implementación de la gráfica se consigue mediante la librería ApexCharts.
 
 \begin{figure}[H]
     \centering
@@ -394,7 +398,7 @@ Esta subvista representa la visualización de las historias de usuario que fuero
 
 Los diferentes valores que posee esta subvista están relacionados con la entidad Popularidad (\ref{subsub:ent-popularidad}), a excepción de propiedades de la gráfica y atributos complementarios como \textit{url}, para redirigir a la plataforma de Twitter. La función debe transformar el texto en formato \textit{Date} de JavaScript.
 
-\subsection{Subvista Palabras más Comunes y Keywords}
+\subsection{Subvista Palabras más Comunes y Keywords}\label{subs:vista-key}
 Esta subvista representa la visualización de las historias de usuario que fueron contempladas en el Sprint 7 (\ref{subs:sprint-7}). En ellas el usuario debe poder visualizar datos de interés sobre las palabras más comunes, las \textit{keywords} y un gráfico de radial de barras correspondiente. La implementación de la gráfica se consigue mediante la librería ApexCharts.
 
 \begin{figure}[H]
@@ -417,7 +421,7 @@ Esta subvista tuvo un diseño inicial que fue descartado por problemas de diseñ
     \caption[Diseño descartado de la segunda subvista]{Diseño descartado de la segunda subvista.}\label{gfx:subvista2-descartada}
 \end{figure}
 
-\subsection{Subvista Sentimiento General}
+\subsection{Subvista Sentimiento General}\label{subs:vista-senti}
 Esta subvista representa la visualización las historias de usuario que fueron contempladas en el Sprint 8 (\ref{subs:sprint-8}). En ellas el usuario debe poder visualizar datos de interés sobre el sentimiento general de los tweets o publicaciones y un gráfico de burbujas correspondiente. La implementación de la gráfica se consigue mediante la librería ApexCharts.
 
 \begin{figure}[H]
@@ -429,7 +433,7 @@ Esta subvista representa la visualización las historias de usuario que fueron c
 
 Los diferentes valores que posee esta subvista están relacionados con la entidad explicada en la sección \ref{subsub:ent-sentiment}. La función calcula el porcentaje dependiendo del radio de las burbujas.
 
-\subsection{Subvista Noticas Relacionadas}
+\subsection{Subvista Noticas Relacionadas}\label{subs:vista-noti}
 Esta subvista representa la visualización las historias de usuario que fueron contempladas en el Sprint 9 (\ref{subs:sprint-9}). En ellas el usuario debe poder visualizar datos de interés sobre las noticias o artículos relacionados sobre la tendencia.
 
 \begin{figure}[H]

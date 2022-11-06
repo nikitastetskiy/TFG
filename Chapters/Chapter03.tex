@@ -1,221 +1,117 @@
-\chapter{Estado del arte}\label{ch:estado-del-arte}
+\chapter{Planificación}\label{ch:planificacion}
 %************************************************
 
-\section{Dominio del problema presentado}
-
-Como se había mencionado en las secciones anteriores, la motivación detrás de este proyecto es la creación de una herramienta que permita al usuario un uso más moderado y responsable de la información dada por las \ac{RRSS}. Para entender mejor el contexto, la definición que nos proporciona el autor Orihuela de las \ac{RRSS} es:
-
-\begin{quotation}
-		\textit{Son servicios basados en la web que permiten a sus usuarios relacionarse, compartir información, coordinar acciones y en general, mantenerse en contacto. \cite{orihuela2008internet}}
-\end{quotation}
-
-Dando a entender que las \acs{RRSS} son percibidas como un gran entorno social, en el cual se comparte información de una manera constante.
+\section{Planificación inicial}
+La planificación mostrada a continuación fue realizada al inicio del proyecto, siendo ésta de muy alto nivel. De momento no vamos a indagar en detalles específicos sobre las metodologías usadas o la planificación real, esto en cambio, se detallará en la sección posterior.
 
 \vspace{0.3cm}
 
-El hecho de que estos entornos sociales tengan un fácil acceso, fomentando la posibilidad de adicción y esto siendo de una manera deliberada termina siendo el problema real del consumo de información en las \acs{RRSS}. Se han mencionado artículos y estudios anteriormente donde se explicaba que la adicción de las \acs{RRSS} viene directamente de la parte de la programación \cite{Social-Deliberately} y  que las \acs{RRSS} pueden llegar a crear una dependencia más grande aún que el tabaco. \cite{Tabaco-Study}
+Un trabajo de fin de grado está compuesto por 12 créditos en el Título de Grado en Ingeniería Informática de la Universidad de Granada. Además, por normativa de la universidad, a cada crédito ECTS se le establece un número de 25 horas de trabajo. En total, 300 horas de trabajo. Esto se traduce a casi dos meses de trabajo si contamos con una jornada laboral completa y descanso los fines de semana.
 
 \vspace{0.3cm}
 
-Todo esto acaba reflejado directamente en los usuarios, los cuales son realmente el lucro de todas estas grandes compañías. El objetivo real de todas estas empresas es conseguir el mayor número de usuarios y el mayor uso de su aplicación posible. De este modo a ellos, a términos generales, les conviene conseguir algoritmos o técnicas que favorezcan la consumición de dicho producto.
+Aunque, al fin y al cabo, sigue siendo una estimación muy ligera a lo que realmente terminará siendo. Por lo que la estimación que usaré a continuación será en base a las fechas del inicio y el fin de la elaboración del proyecto, en mi caso será desde inicios de Julio hasta finales de Octubre:
 
 \vspace{0.3cm}
 
-La idea general, la cual nos adentraremos en más detalle a continuación, viene a ser la abrumación de la información donde el usuario ni si quiera está en control del consumo de dicha información y tampoco del tiempo empleado dentro de la aplicación.
+\begin{figure}[bth]
+
+    \myfloatalign
+    \includegraphics[width=0.9\textwidth]{gfx/plan-simple.png}
+    \caption[Planificación inicial del proyecto]{Visión general sobre la estructura de la elaboración del proyecto.}\label{gfx:plan-simple}
+
+\end{figure}
+
+\newpage
+
+\begin{itemize}
+    \item Inicio \textit{(01-07-22 $\sim$ 01-08-22)}: etapa de planificación de la memoria y el estado del arte. Además, se intentará tener un primer prototipo de la aplicación.
+    \item Diseño \textit{(01-08-22 $\sim$ 01-09-22)}: inicios de la codificación y la elaboración de la parte correspondiente de la memoria.
+    \item Lanzamiento \textit{(01-09-22 $\sim$ 01-10-22)}: etapa donde se realizarán pruebas de usuario y finalizará la codificación.
+    \item Entrega final \textit{(01-10-22 $\sim$ 31-10-22)}: elaboración de conclusiones respecto al cumplimiento del software y sus posibles mejoras.
+\end{itemize}
+
+\section{Planificación detallada}\label{ch:planificacion_detallada}
+
+Al planificar el proyecto de la manera que está representado en la figura \ref{gfx:plan-simple}, he optado por una metodología ágil para confrontar el proyecto.
 
 \vspace{0.3cm}
 
-Todo ello tendrá consecuencias reflejadas directamente y exclusivamente en los usuarios, lo cual se verá en el siguiente apartado \ref{sec:consec_problm}.
+Esto es debido a que necesitamos un marco de trabajo que sea adaptativo y flexible a la hora de realizar distintas pruebas y su correspondiente arreglo a la hora de encontrarnos errores o cambios exigidos por el cliente.
 
 \vspace{0.3cm}
 
-Toda esta información puede llegar a ser obvia si se expone superficialmente. Por lo que es necesario entrar en mucho mayor detalle a la hora de exponer el problema.
-
-\subsection{Causas del problema presentado}
-
-El \textit{smartphone} o teléfono móvil es solamente una mera herramienta que nos permite conectarnos a Internet y acceder a diferentes servicios virtuales o aplicaciones web. El sentimiento de la adicción no se origina en la propia herramienta, sino en los distintos servicios ofrecidos por ella.
+Todas estas ventajas son las que me encaminado a elegir esta metodología, la cual parece tener las mejores prácticas para este proyecto en concreto.
 
 \vspace{0.3cm}
 
-El modelo de negocio de la mayoría de las aplicaciones web consiste en el intercambio de datos personales en cambio al uso del propio producto. De esta manera pueden posteriormente tener mejores resultados de ventas en base a anuncios personales. Se estima que alrededor de un 91\% de los compradores son más receptivos a la compra de un producto cuando una marca personaliza su comunicación con ellos, es decir, anuncios personalizados en base a sus perfiles. \cite{FORBES-RRSS-AS}
+Hoy en día, el marco de trabajo más ampliamente conocido y a la vez el más ventajoso sea posiblemente SCRUM. Se ha elegido este marco de trabajo para tener el mejor resultado posible a la hora de abarcar el proyecto. Sus principales ventajas son la flexibilidad y la productividad, pero abarcaremos más en detalle sus propiedades en la sección \ref{sec:metodologia}.
 
 \vspace{0.3cm}
 
-Por lo que no es de extrañar que los propietarios de las aplicaciones web tengan la intención de prologar el uso de la misma, ya que esto les proporcionará mayor estudio de los perfiles de sus usuarios, mayor posibilidad de compra en sus anuncios y obviamente mayor rendimiento o beneficio.
+En la siguiente página se podrá ver la planificación en mucho mayor detalle. En la tabla (figura \ref{gfx:plan-detallado}) se detalla toda la perspectiva del trabajo, desde las partes más fundamentales de la documentación hasta el diseño de la propia aplicación.
+
+\begin{figure}[hbtp]
+
+    \myfloatalign
+    \includegraphics[width=0.73\textwidth]{gfx/plan-detallado.png}
+    \caption[Planificación detallada del proyecto]{Visión más detallada sobre la estructura de la elaboración del proyecto.}\label{gfx:plan-detallado}
+
+\end{figure}
+
+\newpage
+
+\section{Presupuesto}
+
+Las horas de trabajo las tenemos especificadas desde un principio, es decir, el trabajo de fin de grado por normativa tiene 300 horas. Gracias a las páginas web como Talent podemos saber que el salario medio de un desarrollador web está en torno de los 11,79 €. \cite{Salario-Desarrollador-Web} En cuanto a las horas de trabajo y sus diferentes secciones quedaría de la siguiente manera.
 
 \vspace{0.3cm}
 
-De esta manera, es bastante sencillo encontrar diseños, patrones o incluso algoritmos que tengan la intención de la prolongación de uso de los usuarios en la aplicación web. Existen distintos elementos utilizados para prolongar el tiempo de uso de las aplicaciones de redes sociales, algunos de ellos los detallaremos a continuación. \cite{Adiccion-RRSS-Features}
+\begin{table}[h]
 
-\begin{enumerate}
+    \centering
+    \setlength\arrayrulewidth{0.8pt}
 
-    \item
-    \textit{Scroll} ó \textit{Streaming} infinito:
-    
-    Gran cantidad de aplicaciones tienen un diseño inmersivo, en consecuencia, llegan a un producir lo que en psicología se denomina \textit{flujo} ó \textit{la zona} \footnote{El \textit{flujo} ó \textit{la zona} es un estado mental que se consigue cuando una persona está completamente inmersa en la actividad que esté ejecutando, es decir, es un estado de concentración de energía o de motivación.}. Dicho flujo mental, es una cualidad que normalmente es positiva, ya que puede llegar a incrementar en una gran medida la productividad. En otros casos puede llegar a ser altamente peligrosa, como es el caso de los dispositivos móviles; la actividad puede llegar a ser altamente gratificante y tener una retroalimentación directa con el usuario, dando lugar a la perdida de la noción del tiempo o su propia distorsión.
-    
-    Un claro ejemplo de esto es la prohibición del uso del teléfono móvil al circular con vehículo por las vías publicas, esto es debido del alto peligro que puede llegar a haber al prestar atención o variar el flujo mental por la mayor inmersión que ejerce el teléfono móvil y dichas aplicaciones instaladas en él.
+    \begin{tabular}{ >{\centering\arraybackslash}m{1.2in} | >{\centering\arraybackslash}m{0.8in} | >{\centering\arraybackslash}m{0.8in} | >{\centering\arraybackslash}m{0.8in} |}
 
-    Este estado mental es provocado directamente de las aplicaciones instaladas en los teléfonos y esto de manera deliberada por muchos programadores. El \textit{Scroll} ó \textit{Streaming} infinito es solamente un diseño que fue propuesto por Raskin en 2006. Dicho diseño es sumamente adictivo, ya que no da tiempo a que lleguen todos los impulsos necesarios del cerebro mientras que el usuario sigue deslizando contenido tras contenido. El usuario además encuentra algo gratificante con cada contenido nuevo aportado, como puede ser un vídeo o foto graciosa. Este efecto llega a ser muy parecido al efecto que producen las máquinas tragaperras, la condición de inmersión al usuario es prácticamente igual. Otro diseño parecido puede ser el \textit{Auto-play} \footnote{\textit{Auto-play} es una herramienta donde se proporciona contenido infinito si no se llega a parar por el propio usuario. Un ejemplo de ello, aplicaciones como YouTube o Spotify, donde se requiere darle al botón \textit{pause} para frenar dicho contenido.}, donde la lógica es la misma.
+\cline{2-4}
+                                                                          & \cellcolor{RoyalBlue}{Horas} & \cellcolor{RoyalBlue}{Porcentaje} & \cellcolor{RoyalBlue}{Coste} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Introducción}}       & $16.9014$                                              & $5.6338$ \%                                                 & $199.27$ €                                             \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Estado del arte}}    & $8.4507$                                               & $2.8169$ \%                                                 & $99.64$ €                                              \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Formación}}          & $21.1267$                                              & $7.0422$ \%                                                 & $249.08$ €                                             \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Entorno de trabajo}} & $147.8873$                                             & $49.2957$ \%                                                & $1743.59$ €                                            \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Diseño}}             & $105.6338$                                             & $35.2112$ \%                                                & $1245.42$ €                                            \\ \hline
+\multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Total}}              & $\approx$ $300$                                                & $\approx$ $100$ \%                                                  & $3536.99$ €                                            \\ \hline
+\end{tabular}
 
-    El creador de dicha herramienta, Raskin, expuso en una entrevista su arrepentimiento de haber creado algo tan adictivo \footnote{Raskin además de admitir que nunca pudo predecir lo adictivo que su invento podría ser, también comentó que él mismo está usando un filtro monocromático en su dispositivo móvil para minimizar lo adictivo que puede llegar a ser tener tantos estímulos en la pantalla.}. Su intención era más bien intentar innovar las interfaces que volver a las personas tan adictivas. \cite{Social-Deliberately}
+    \caption[Presupuesto de la mano de obra]{Presupuesto de la mano de obra, junto con las horas trabajadas.}\label{table:presupuesto-obra-de-mano}
 
-    \item Efecto dotación ó efecto de mera exposición:
+\end{table}
 
-    El efecto dotación consiste en que las personas atribuyen más valor a un objeto por el simple hecho de poseer dicho objeto. Esto es, que si una persona llega a poseerlo, ya sea tangible o intangible, luego le es más difícil desprenderse de ello aunque le ofrezcan el mismo o incluso mayor valor que posee dicho objeto.
-
-    El efecto de mera exposición también es un efecto psicológico, este se basa en que la reiteración de exposiciones incide o estimula en nuestro agrado o desagrado. En otras palabras, las personas llegan a familiarizarse con distintos estímulos por el simple hecho de repetirlos en diferentes ocasiones.
-
-    Estos dos efectos influyen en nuestro contexto, de tal manera que los usuarios de distintas aplicaciones al gastar más tiempo, valor o dinero en ellas les resulte más complicado posteriormente abandonar o siquiera desinstalar la propia aplicación. Tanto por el simple hecho de llegar a tener algún tipo de valor en la propia aplicación, como por ejemplo seguidores o \textit{likes}, ó directamente por estar familiarizados con la aplicación por haberla usado día a día y verla siempre en la pantalla de inicio.
-
-    \item Presión social:
-
-    WhatsApp actualmente es la aplicación de mensajería más usada en todo el mundo, ahora mismo, posee más de 2.000 millones de usuarios. \cite{Adiccion-RRSS-WhatsApp} Al igual que otras redes sociales dominantes en el mercado, como Instagram o Twitter, posee diseños construidos de tal manera que llegan a inferir desde muchas personas a un individuo en concreto, ejerciendo algo parecido a la presión social.
-
-    Un claro ejemplo de esto puede ser la función el doble \textit{tick} azul. Consiste, en el caso de la mensajería instantánea, notificar al usuario de que el mensaje ha llegado hacía la otra persona y además fue leído por ella. Esta función compromete al usuario de manera que tenga responder rápidamente o incluso por obligación si el mensaje fue leído o entregado. Dicha función aparece activada por defecto, la cual muchos usuarios ni son conscientes de que pueden llegar a cambiar. Según un reporte, únicamente un 5\% de los usuarios de Mirosoft Word llegó a cambiar algún ajuste que venía por defecto. \cite{Adiccion-RRSS-Settings}
-
-    De manera análoga, se puede establecer un vinculo de las características mencionadas anteriormente con la presión social, como es el caso del doble \textit{tick} azul, y el síndrome o fenómeno \ac{FOMO}. Como su nombre expresa, es el miedo a perderse algo o ser excluido, dando lugar a la necesidad de estar permanentemente conectados y \textit{actualizados}. Las consecuencias pueden llegar a ser muy graves, ya que cuanto mayor es el uso del dispositivo móvil mayor es el grado de \acs{FOMO}; el temor de perderse algo y de esta manera no satisfacer nuestras necesidades psicológicas retroalimenta el uso problemático y abusivo de las aplicaciones. \cite{Adiccion-RRSS-FOMO}
-
-    \item Contenido personalizado con la intención de causar agrado:
-
-    Al entrar a cualquier aplicación tipo Facebook, Instagram o Twitter lo primero que se encuentra el usuario es con una abrumación de contenido para que este no tenga momento de aburrirse. Este contenido suele recibir el nombre de \textit{Feed}, \textit{NewsFeed} o \textit{TimeLine}. Al presentar el \textit{Feed} a cualquier usuario, este viene personalizado de antes con los gustos del usuario, para intentar mantenerlo el mayor tiempo posible.
-
-    Los algoritmos que hay por detrás del \textit{Feed} de cada usuario son enormemente complejos, ya que no solo se encargan de calcular el contenido que le agrada al usuario por medio de \textit{likes} o \textit{shares} del contenido, sino también de el contenido que el usuario gasta en mirar cada publicación.
-
-    Anteriormente el \textit{Feed} de las aplicaciones funcionaba de manera cronológica, pero actualmente se basan en la retención de la atención del usuario. Intentado mostrar al usuario contenido que sea afín a sus intereses. \cite{Adiccion-RRSS-Edgerank}
-
-    Aunque no siempre tienen la intención de causar agrado, en algunos reportes se declaró justo lo contrario. Gracias a Frances Haugen, en 2021 se filtró información sensible sobre FaceBook donde entre mucha información se exponía que esta red social también llega a mostrar contenido que el usuario puede odiar, solamente para tener más retención por parte del usuario. \cite{Adiccion-RRSS-Odias} Esto además se traduce a que el algoritmo muestre contenido cada vez más violento para que el usuario tienda siempre a interaccionar con él.
-    
-    \item Comparación y recompensa social:
-
-    El \textit{Like} fue desarrollado por Justin Rosenstein, esta función probablemente es el mecanismo más emblemático de recompensa social que hay hasta el momento. Es recompensa social, ya que hay retroalimentación social positiva al interaccionar con los \textit{likes} de una publicación. Esta retroalimentación social está demostrada científicamente, en un experimento neurocientífico se presentaron imágenes con muchos \textit{likes} ó \textit{me gustas}, estas imágenes provocan una actividad más fuerte en el cuerpo estriado del cerebro (parte del cerebro relacionada con los mecanismos de recompensa). Además también se detectó que los volúmenes bajos de materia gris se asociaron con el uso prolongado de este tipo de aplicaciones, lo que daba lugar a mayores tendencias adictivas. \cite{MONTAG2017221,sherman2018peer}
-
-    Leah Pearlman, co-inventora del botón \textit{Me gusta} de Facebook, dijo que se sintió adicta a Facebook porque había empezado a basar su autoestima en la cantidad de \textit{likes} que tenía. \cite{Social-Deliberately} Aunque este normalizado, sigue siendo un problema el que una persona sea capaz de compararse numéricamente por el hecho de como es percibida por su red social. Aunque hablemos de las consecuencias más adelante (\ref{sec:consec_problm}), hay que mencionar el hecho de compararse de esta manera puede dar lugar a una baja autoestima y otros muchos problemas.
-
-    \item Sistema de notificaciones:
-
-    La funcionalidad de un simple sistema de recordatorios, nos presenta notificaciones en determinados momentos a lo largo del tiempo, ya sea a través del sonido o recuadros visuales. El objetivo de estas notificaciones puede ser una utilidad de la aplicación, como un mensaje o solo para tener presente el hecho de que podemos volver a usar la aplicación.
-    
-    De esta manera nos tienen pendientes mediante un sencillo sistema, el cual puede llegar a ser muy útil en determinados momentos, como un mensaje del banco. Sin embargo, el diseño de dicho sistema puede llegar a ser perjudicial para el usuario. Un claro ejemplo de esto es Instagram, la cual agrupa notificaciones para poder otorgar al usuario mayor cantidad de recompensa o agrado, es decir una cantidad determinada de \textit{likes}, esto se traduciría al control de diferentes neurotransmisores como la dopamina en el usuario, aunque indagaremos más a fondo en la sección \ref{sec:prosc_problm}.
-
-\end{enumerate}
-
-Todos estos numerosos problemas están estrechamente relacionados con las aplicaciones que existen a día de hoy, ya sea solamente uno o numerosos de ellos en la misma aplicación. Estos además pueden llegar a aumentar su efecto de distintas maneras si se agrupan entre si.
+En base a ello, podemos calcular que unas 300 horas de trabajo equivaldrían a 3537 € y la elaboración de la documentación o el manual equivaldrían a 300 €. En total 3837 € solamente por la mano de obra.
 
 \vspace{0.3cm}
 
-El tipo de aplicaciones que se sugiere en el párrafo anterior son las aplicaciones que anteponen la posibilidad de monetización a la eticidad respecto al usuario. Este tipo de aplicaciones no prioritizan agilizar nuestro modo de vida, como es el caso de una aplicación bancaria, sino que intentan generar estímulos presentes entre emociones negativas como la soledad o el aburrimiento.
+Buscaré además el uso de herramientas gratuitas de diferentes servicios para el mantenimiento del servicio web. En los servicios como Heroku varían los precios entre 100 € y 200 € al mes, pero también poseen herramientas gratuitas y muy limitadas, lo que nos permitirá un gran ahorro al inicio del proyecto. Igualmente, para el proyecto cubriré necesidades básicas, como un área de trabajo y un ordenador capaz de manejar dicho proyecto.
 
 \vspace{0.3cm}
 
-Sandy Parakilas, antiguo director de operaciones de FaceBook llego a comentar lo complicado que le era abandonar la plataforma, comparándola con cigarrillos o maquinas de casino. Aunque también comentó cuestiones de mayor peso, explicando que el uso de estas aplicaciones construían un habito en nuestras vidas: \cite{Social-Deliberately}
+\begin{table}[h]
 
-\begin{quotation}
-		\textit{There was definitely an awareness of the fact that the product was habit-forming and addictive. [...] You have a business model designed to engage you and get you to basically suck as much time out of your life as possible and then selling that attention to advertisers.}
-\end{quotation}
+    \centering
+    \setlength\arrayrulewidth{0.8pt}
 
-Lo cual viene a ser un buen resumen de lo que se ha tratado de explicar en esta sección. En castellano tendría este significado:
+    \begin{tabular}{ >{\centering\arraybackslash}m{1.2in} | >{\centering\arraybackslash}m{0.8in} | >{\centering\arraybackslash}m{0.8in} |}
 
-\begin{quotation}
-		\textit{Definitivamente hubo un conocimiento del hecho de que el producto era capaz de crear hábitos y era adictivo. [...] Tienes un modelo de negocio diseñado para engancharte y hacer que básicamente absorba la mayor cantidad de tiempo posible de tu vida y luego venda esa atención a los anunciantes.}
-\end{quotation}
+    \cline{2-3}
+                                                                              & \cellcolor{RoyalBlue}{Cantidad} & \cellcolor{RoyalBlue}{Coste} \\ \hline
+    \multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Espacio de trabajo}} & $4$ meses                                                 & $\approx$ $400$ €                                                \\ \hline
+    \multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Ordenador}}          & $1$                                                       & $\approx$ $900$ €                                                \\ \hline
+    \multicolumn{1}{|c|}{\cellcolor{RoyalBlue}\textbf{Total}}              &                                                         & $\approx$ $1300$ €                                               \\ \hline
+    \end{tabular}
 
-\subsection{Proceso gradual del problema}\label{sec:prosc_problm}
+    \caption[Presupuesto de servicios adicionales]{Presupuesto de servicios adicionales, junto con las diferentes cantidades.}\label{table:presupuesto-adicional}
 
-\subsubsection{Inflexión en el individuo}
+\end{table}
 
-El uso de las redes sociales tiene numerosos efectos sobre el cerebro, estos pueden llegar a influir tanto de manera positiva como negativa. Al navegar por las \acs{RRSS} el cerebro se adapta llegando a crear nuevas redes neuronales. \cite{Cerebro-RRSS-AS} Además, también pueden llegar a producir diferentes cambios en la manera que funcionan distintos neurotransmisores como la oxitocina, la adrenalina, la dopamina, la serotonina, la testosterona y el cortisol.
-
-\vspace{0.3cm}
-
-Todos estos neurotransmisores tienen un determinado papel a la hora de estar usando las distintas aplicaciones en los teléfonos móviles. La oxitocina está relacionada con la influencia de la familia y la pareja, mientras que la adrenalina se vincula con la agresividad. El aumento de serotonina se llega a traducir a comportamientos sociales en ámbitos más introvertidos. Por otra parte, altos niveles de testosterona y el cortisol tienen que ver con una alta fidelidad aunque menor número de amistades virtuales.
-
-\vspace{0.3cm}
-
-Aunque la que podría llegar a ser más problemática para el usuario es la dopamina \footnote{La dopamina regula la emotividad y la afectividad, así como en la comunicación neuroendocrina. Algunas alteraciones en la transmisión dopaminérgica han sido relacionadas con la adicción a drogas (anfetaminas y cocaína por ejemplo). \cite{bahena2000dopamina}}, ya que está mucho más relacionada con las redes sociales. Anteriormente mencionamos que las \acs{RRSS} proporcionan al usuario diferentes tipos de interacciones y recompensas sociales, de esta manera generando al usuario emotividad y afectividad.
-
-\vspace{0.3cm}
-
-Existen cuatro vías que transmiten dopamina en nuestro cerebro llamadas vías dopaminérgicas, ellas son la mesocortical, la nigroestriada, la mesolímbica y la tuberoinfundibular. Las tres primeras de ellas están relacionadas con las recompensas que se mencionaba en el texto anterior. Al tener un estimulo satisfactorio o agradable por estas vías, ciertas acciones se disparan y nuestro cerebro refuerza dicho comportamiento. \cite{Xataka-RRSS-AS}
-
-\vspace{0.3cm}
-
-Aunque cabe mencionar que el abuso de estas vías por medio de sustancias o hábitos da lugar a la creación de la adicción. Además la falta de dicho estimulo puede provocar un rechazo por parte del cerebro creándonos malestar o ansiedad, esto es debido a que estas vías se hayan podido \textit{deformar} por un mal habito o aprendizaje, como por ejemplo la transmisión de la posible tranquilidad que nos puede aportar estar continuamente consultando el teléfono.
-
-\vspace{0.3cm}
-
-Los seres humanos somos seres sociales y es normal que dependamos de interacciones continuamente, dando lugar a una posible adicción de conducta. Esto es, debido a que no solo se puede ser adicto a una sustancia, sino a diferentes conductas o hábitos, un ejemplo de ello puede ser una máquina de un casino. El efecto que genera una máquina de casino y una red social en el cerebro puede llegar a ser parecida, además la recompensa que nos sirven este tipo de adicciones son mucho más satisfactorias y requieren menos esfuerzo que cualquier actividad más sana como el ejercicio o la lectura. \cite{quintero2021que}
-
-\vspace{0.3cm}
-
-Según un estudio del Universidad de Philipps, las recompensas sociales que disparan los distintos mecanismos de las vías dopaminergicas son sencillas interacciones que tenemos con los seres humanos, ya sea una caricia, sonrisa o palabras afectivas. Todas estas interacciones son suficientes para influir como una recompensa social y crear dicho estimulo. Los investigadores evolutivos explican este fenómeno como un mecanismo social del ser humano necesario y positivo. \cite{Frontiers-RRSS-AS}
-
-\vspace{0.3cm}
-
-Entrando más en detalle en las adicciones de conducta y las notificaciones de las aplicaciones. Podemos recurrir al clásico caso de la teoría de Pavlov del siglo XX, donde se presentaba un estimulo que no tenía nada que ver y terminaba siendo reflejo condicional (Ley del reflejo condicional o condicionamiento clásico). En la teoría de Pavlov se tocaba una campana al servir comida a unos perros, al cabo de un tiempo los perros al escuchar el estimulo de la campana llegaban a salivar sin que se les sirviera la comida. \cite{Pavlov-RRSS-AS}
-
-\vspace{0.3cm}
-
-En cierto sentido hay parecidos entre el condicionamiento clásico de Pavlov y las notificaciones de los dispositivos móviles hoy en día. El estimulo de la notificación nos crea la conducta de estar pendientes de los teléfonos y estar mirándolos continuamente, llegando a coger el móvil decenas o centenares de veces al día. Además este estimulo puede estar asociado a un sentimiento positivo, como puede ser el mensaje de un amigo. Un sencillo ejemplo de ello es acudir o prestar atención a un móvil ajeno por tener un sonido de notificaciones parecido al propio.
-
-\vspace{0.3cm}
-
-Según la investigadora de diseño de la red social Twitter, Ximena Vengoechea, afirma que el \textit{enganche} de la notificación compromete a dos mecanismos, uno interno y otro externo. \cite{Xataka-RRSS-AS} Se refiere al interno como la emoción, mientras que el externo es la acción que pretende que hagamos. La sincronización de ambos es la combinación que despierta la motivación del usuario, creando la necesidad de la recompensa. Además, como ya sabíamos, las \acs{RRSS} aprovechan la implicación de estímulos visuales o distintos diseños derivando en un mecanismo de muchos niveles. Esta mezcla nos crean distintas costumbres o hábitos que son, sin darnos cuenta, posiblemente adictivos.
-
-\vspace{0.3cm}
-
-Actualmente este tipo de temas son bastante comentados, aunque tristemente este uso problemático de las redes sociales fueron ignorados debido a la gravedad de la situación surgida por el COVID-19. La mayoría de las actividades que realizábamos día a día se volvieron virtuales, dando lugar a un incremento de dependencia y a una autentica necesidad de comunicación por medios virtuales.
-
-\subsubsection{Inflexión en la sociedad}
-
-Otra consecuencia gradual en base al problema es la cantidad de información que es bombardeada al usuario día tras día, dando lugar a una gran cantidad de contenido que realmente es difícil de manejar. En cualquier red social, se masifica y se comparte la información o una noticia mediante opiniones. Creando así tendencias, pero quitando de esta manera la objetividad de la información o directamente dando lugar a su mal interpretación.
-
-\vspace{0.3cm}
-
-La noticia o tendencia por lo general suele tergiversarse debido a la cantidad ingente de opiniones e interacciones a las que se ve el sujeto. Dando lugar, a que el usuario no sea capaz de sacar en claro el estado de la noticia o tendencia, tanto si al final es positiva o negativa, en base a unas pocas compartidas. Además es de suma importancia el recibo que tienen estas opiniones mediante sus interacciones o la cantidad de opiniones parecidas que se van publicando a lo largo del tiempo de vida de la tendencia. Por lo que la medida más óptima de informarse de dicho contenido es a través de una recopilación objetiva, con la meta de alejarse de las opiniones y abarcar una información final respecto al tema que se intenta compartir.
-
-\subsection{Consecuencias producidas en base al problema}\label{sec:consec_problm}
-
-Los problemas existentes acaban afectando a todos los usuarios, independientemente de su edad. Por normativa, legalmente las redes sociales exigen que sus usuarios tengan al menos 13 años a la hora de crearse una cuenta. Aunque es cierto que esto no se cumpla del todo y haya usuarios con menos de 13 años exponiéndose a diferentes peligros de las \acs{RRSS}.
-
-\vspace{0.3cm}
-
-Estudios realizados en 2021 demuestran que los niños a partir de 10 años tienen tendencias de uso de redes sociales. Estas exposiciones a tan temprana edad pueden terminar siendo un peligro y llegar a ser una adicción.  \cite{Adiccion-RRSS}
-
-\vspace{0.3cm}
-
-Estos problemas también pueden surgir en personas de más avanzada edad. Ya hemos visto que el deseo de acceder a redes sociales como Twitter o Instagram se encuentra como el deseo más complicado de resistir y más sencillo de complacer. Sustancias adictivas como el tabaco o el alcohol generan un deseo mucho más débil, esto además es muy fácil de demostrar sabiendo que un usuario promedio de estado unidos mira el teléfono unas 344 veces al día, lo que se traduce como usarlo cada 4 minutos al día. \cite{Reviews-RRSS-AS}
-
-\vspace{0.3cm}
-
-Otro estudio, igual de reciente, mostraba que el 40\% de la población española llegaba a tener problemas relacionados con la adicción al Internet. Para hacernos una idea, en 2008 dedicábamos una media de 18 minutos al móvil, en cambio, ya a partir de 2015 gastábamos alrededor de 3 horas diarias. Esto llegaba a afectar a los adolescentes de tal manera, que el 80\% de ellos tenían la necesidad de mirar el móvil, al menos, una vez cada hora a lo largo del día. \cite{Adiccion-RRSS-Interesante}
-
-\vspace{0.3cm}
-
-Las consecuencias de la adicción a las redes sociales pueden llegar a ser la ansiedad, dependencia emocional, baja autoestima o problemas de sociabilización. Estudios realizados en 2021, demostraron la correlación existente entre la dependencia de las \acs{RRSS}, la autoestima, ansiedad y la obsesión. Para ello participaron 100 alumnos, estudiantes universitarios. Este estudio corroboró información que existía previamente, resultados que señalaban que las personas que tenían adicción al uso del Internet presentaban una menor autoestima y relaciones personales más inestables. \cite{CNEIP-RRSS-AS}
-
-\vspace{0.3cm}
-
-Esto también fue expuesto en las redes sociales, la autoestima influía en el uso de \acs{RRSS} de manera reciproca, es decir, tener una alta autoestima también significaba un menor uso de \acs{RRSS}. Además los estudiantes que presentaban una mayor autoestima exhibían niveles más bajos de obsesión, mayor control personal y empleo de dichas \acs{RRSS}. En cambio, cuando el uso de las \acs{RRSS} era mayor, los niveles de autoestima eran más bajos, incrementando de esta manera los niveles de ansiedad y depresión.
-
-\vspace{0.3cm}
-
-Sin embargo, el estudio no especifico la existencia de una correlación entre la adicción y la autoestima. Aún teniendo datos como el 66.7\% de los adolescentes fueron expuestos como adictos al Internet (no a las \acs{RRSS} \footnote{En dicho estudio solamente se midió, mediante cuestionarios, la adicción del Internet en general y no específicamente las redes sociales.}) y 62.7\% manifestaron problemas de autoestima. Aunque si se demostró la existencia de correlación entre la adicción y la ansiedad. \cite{CNEIP-RRSS-AS}
-
-\section{Conclusión elaborada en base al problema}
-
-En el texto anterior se quedó demostrado el hecho de que las redes sociales pueden llegar a ser adictivas, como son capaces de influir en un individuo y sus consecuencias. El problema real de esto recae en el propio diseño de las aplicaciones, 
-si la información fuera expuesta de una manera clara y sin patrones con la intención de retener al usuario el mayor tiempo posible; el usuario podría usar dichas aplicaciones sin tan grave peligro.
-
-\vspace{0.3cm}
-
-La solución que se pretende proponer es una aplicación sin los diseños que se han comentado. En primer lugar, siendo una aplicación con un contenido finito y este siendo el más importante en el que se centre el usuario. La aplicación web se centraría en las tendencias más importantes de cada país del usuario, de esta manera mostrando los eventos más importantes que hayan ocurrido al final del día.
-
-\vspace{0.3cm}
-
-Siendo una aplicación web, se elimina la necesidad de tenerla instalada y sus posibles notificaciones. Además se centraría en ser objetiva, quitando el efecto \acs{FOMO} y la personalización de contenido. Al quitar la parte subjetiva y distintas opiniones, es decir, eliminando la parte social de las \acs{RRSS} y solo quedándonos con la información; eliminamos la posible comparación entre usuarios existente.
-
-\vspace{0.3cm}
-
-De esta manera, hay una posibilidad de seguir \textit{actualizados} pudiendo ver el contenido importante que se ha proporcionado durante el día, pero quitando el peligro de volvernos adictos.
-
+De modo, que el coste total del proyecto sería la suma de ambas cantidades. En este caso, quedaría en 5137 €.
