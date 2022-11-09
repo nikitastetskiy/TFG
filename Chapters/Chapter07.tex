@@ -48,7 +48,7 @@ En este primer caso, creo que es conveniente mostrar tanto el pseudocódigo como
 
 La función tiene por \textit{input} \textit{country}, el cual es un diccionario con valores predefinidos que necesita cada país, es decir, valores como el nombre del país, el WOEID, el código del país, su lenguaje y su zona horaria. Otro valor predefinido es el \textit{endpoint} de mi servidor, para realizar llamadas HTTP.
 
-\newpage
+\vspace{0.3cm}
 
 \begin{lstlisting}[caption=Operación principal,          label={lst:listing-python},language=Python]
 def main_operation(country):
@@ -199,6 +199,10 @@ La generación del diccionario a simple vista puede parecer sencilla, ya que sol
 
 Primero, si se tiene un objeto ya creado en la base de datos, pues se tendrá que descargarlo y compararlo con el nuevo. Esto es debido a que las tendencias cambian cada hora y se debe tener en cuenta las tendencias viejas y sus distintos atributos. Por lo que se hará una unión entre las tendencias nuevas y las viejas, y posteriormente una diferencia simétrica entre las tendencias restantes con el objetivo de actualizar los atributos de tendencias viejas o incorporar tendencias completamente nuevas. Luego, se tiene que realizar distintas llamadas con distintos parámetros a la API de Twitter, con la intención de crear diferentes objetos funcionales y agregarlos al diccionario (objetos como la popularidad, los sentimientos o artículos).
 
+\vspace{0.3cm}
+
+Al descargar tendencias nuevas y compararlas con las viejas, se hará unión si hay tendencias bajo el mismo nombre. Esto es debido a que es necesario actualizar atributos como la popularidad, pero a la vez mantener el historial del volumen de publicaciones. Luego, la diferencia simétrica se refiere a las tendencias que no aparecen en la unión, ellas también estarán en cuenta a la hora de ordenar la lista de tendencias bajo el valor de la popularidad.
+
 \begin{algorithm}[H]
 
     \Fn{createDictCountry}{
@@ -231,7 +235,7 @@ Primero, si se tiene un objeto ya creado en la base de datos, pues se tendrá qu
 
 \vspace{0.3cm}
 
-Habiendo entendido el pseudocódigo podemos comprender de una manera más sencilla el código fuente. Primero se comprueba si existen tendencias viejas, después se procedería a asignar una estructura constituyente a dichas tendencias mediante la unión y la diferencia simétrica. Además, sólo se procede al final con 20 tendencias y se calcula su popularidad, esto es debido a la optimización de la base de datos. Posteriormente se calculan los demás valores (keywords, sentimientos y artículos) sobre la mitad de las tendencias clasificadas, es decir, un top 10. Las otras diez tendencias, que no llegaron a clasificarse, sirven como referencia posteriormente a la hora de pintar el gráfico de la popularidad, ya que esa información sigue siendo relevante, como historial, si la tendencia llega a ser mostrada.
+Habiendo entendido el pseudocódigo podemos comprender de una manera más sencilla el código fuente. Primero se comprueba si existen tendencias viejas, después se procedería a asignar una estructura constituyente a dichas tendencias mediante la unión y la diferencia simétrica. Además, sólo se procede al final con 20 tendencias y se calcula su popularidad, esto es debido a la optimización de la base de datos y su gestión. Posteriormente se calculan los demás valores (keywords, sentimientos y artículos) sobre la mitad de las tendencias clasificadas, es decir, un top 10. Las otras diez tendencias, que no llegaron a clasificarse, sirven como referencia posteriormente a la hora de pintar el gráfico de la popularidad, ya que esa información sigue siendo relevante, como historial, si la tendencia llega a ser mostrada.
 
 \vspace{0.3cm}
 
@@ -263,7 +267,7 @@ sorted_parsed = sorted(sorted_parsed, key=lambda trend:
     trend.popularity.peak_popularity, reverse=True)[:20]
 \end{lstlisting}
 
-Una vez teniendo la estructura y los objetos de las tendencias, podemos proceder a calcular los demás valores. Primero se hace una llamada a la API con determinado valor hacia el ámbito popular. Se filtran las publicaciones repetidas y se intenta que sean publicaciones populares, si no se consiguen se opta por publicaciones menos famosas. Además, sólo se procede a asignar los valores una vez habiendo calculado todos ellos, para que solo existan objetos completos a la hora de visualizarlos.
+Una vez teniendo la estructura y los objetos de las tendencias, podemos proceder a calcular los demás valores, donde necesitaremos descargar como máximo cien publicaciones o tweets relacionadas con la tendencia. Primero se hace una llamada a la API con determinado valor hacia el ámbito popular. Se filtran las publicaciones repetidas y se intenta que sean publicaciones populares, si no se consiguen se opta por publicaciones menos famosas. Además, sólo se procede a asignar los valores una vez habiendo calculado todos ellos, para que solo existan objetos completos a la hora de visualizarlos.
 
 \vspace{0.3cm}
 
@@ -338,7 +342,7 @@ A la hora de descargar las tendencias de Twitter, se tiene que comparar los nomb
 
 \vspace{0.3cm}
 
-\begin{lstlisting}[caption=Comrobación de los nombres de tendencia,          label={lst:listing-python},language=Python]
+\begin{lstlisting}[caption=Comprobación de los nombres de tendencia,          label={lst:listing-python},language=Python]
 def normalize_str(c):
     s = string.punctuation + " "
     return c.translate(str.maketrans("áéíóú","aeiou", s)).lower()
@@ -377,6 +381,8 @@ def comparing_names(s):
 
 \subsection{Implementación de la Popularidad}
 La entidad Popularidad está compuesta por distintos valores comentados en la sección \ref{subsub:ent-popularidad}. Dentro de la entidad Popularidad está la función que actualiza los valores y se calculan con una librería popular orientada hacia campo matemático llamada \textit{numpy}.
+
+\vspace{0.3cm}
 
 \begin{lstlisting}[caption=Estructuración de la popularidad,          label={lst:listing-python},language=Python]
 # PARSING OBJECT POPULARITY
@@ -509,42 +515,49 @@ Las dos funciones de limpieza existen porque una se usa en el recuento de palabr
 
 \vspace{0.3cm}
 
-Otra de las ventajas de  \ac{YAKE} es que se puede configurar el idioma, la limitación de duplicación de claves o la cantidad de palabras en una \textit{keyword}. A cada palabra clave candidata se le asignará un S(kw) final, de modo que cuanto menor sea la puntuación, más significativa será la palabra clave, de esta manera se formaliza la siguiente ecuación.
+Otra de las ventajas de \ac{YAKE} es que se puede configurar el idioma, la limitación de duplicación de claves o la cantidad de palabras en una \textit{keyword}. El sistema de \ac{YAKE} se rige por seis componentes: preprocesamiento de texto, extracción de características, puntaje de términos individuales, generación de listas de palabras clave candidatas, reduplicación de datos y clasificación. A continuación se explicarán las distintas etapas del algoritmo, pero se recomienda la lectura del libro \textit{YAKE! Collection-Independent Automatic Keyword Extractor} para su completo entendimiento. \cite{yake-libro}
+
+\vspace{0.3cm}
+
+Primero, se aplica una etapa de preprocesamiento, la cual divide el texto en términos individuales cada vez que se encuentra un espacio vacío o un carácter especial (por ejemplo, saltos de línea, corchetes, coma, punto, etc.). En segundo lugar, se diseñan un conjunto de cinco rasgos para capturar las características de cada término individual. Estos son: \textit{Casing}, \textit{Word Positional}, \textit{Word Frequency}, \textit{Word Relatedness to Context} y \textit{Word DifSentence}.
+
+\vspace{0.3cm}
+
+El primero, refleja el aspecto de \textit{casing} de una palabra (capitalización en castellano). \textit{Word Positional} valora más aquellas palabras que aparecen al principio de un documento basándose en la suposición de que las palabras clave relevantes a menudo tienden a concentrarse más al principio de un documento. \textit{Word Frequency} indica la frecuencia de la palabra, puntuando más aquellas palabras que aparecen con mayor frecuencia. La cuarta función, \textit{Word Relatedness to Context}, calcula el número de términos diferentes que aparecen delante o atrás de la palabra candidata. Cuanto mayor sea el número de términos diferentes que coexisten con la palabra candidata (en ambos lados), es probable que la palabra candidata carezca más de sentido. Finalmente, \textit{Word DifSentence} cuantifica con qué frecuencia aparece una palabra candidata dentro de diferentes oraciones.
+
+\vspace{0.3cm}
+
+En el tercer paso, se combina heurísticamente todas estas características en una sola medida, de modo que a cada término se le asigna una puntuación S(w). Este peso dará lugar al proceso de generación de palabras clave del cuarto paso. Se considera una ventana deslizante de 3 gramos, generando así una secuencia contigua de palabras clave candidatas de 1, 2 y 3-gramos. A cada palabra clave candidata se le asignará una S(kw) final, de modo que cuanto menor sea la puntuación, más significativa será la palabra clave. De esta manera se formaliza la siguiente ecuación.
 
 \begin{equation}
 S(kw)=\frac{\prod_{_{w \in kw}}^{}S(w)}{TF(kw)*(1+\sum_{w \in kw}^{}S(w))}
 \end{equation}
 
-\vspace{0.3cm}
-
-El sistema se rige por seis componentes: preprocesamiento de texto, extracción de características, puntaje de términos individuales, generación de listas de palabras clave candidatas, reduplicación de datos y Clasificación. Luego se estudia la ecuación mediante el \textit{Casing}, \textit{Word Positional}, \textit{Word Frequency}, \textit{Word Relatedness to Context} y \textit{Word DifSentence}. Se recomienda la lectura del libro \textit{YAKE! Collection-Independent Automatic Keyword Extractor} para su completo entendimiento. \cite{yake-libro}
+S(kw) es la puntuación de una palabra clave candidata, determinada multiplicando (en el numerador) la puntuación S(w) del primer término de la palabra clave candidata por las puntuaciones posteriores de los términos restantes. Esto se divide por la suma de las puntuaciones de S(w) para promediar la longitud de la palabra clave, de modo que los n-gramos más largos no se beneficien solo porque tienen una \textit{n} más alta. El resultado se divide aún más por TF(kw) (frecuencia del término de la palabra clave) para penalizar a los candidatos menos frecuentes. En el quinto paso, se eliminan candidatos similares provenientes de los pasos anteriores. Para ello se usa la \textit{distancia de Levenshtein} \cite{levenshtein1966binary}. Finalmente, el sistema generará una lista de palabras clave relevantes, formada por 1, 2, 3-gramos, de modo que cuanto menor sea la puntuación de S(kw), más importante será la palabra clave.
 
 \vspace{0.3cm}
 
-En el siguiente código se puede ver la implementación de la librería \ac{YAKE} y el recuento de palabras relevantes. Además las \textit{keywords} extraídas pasan por un filtro donde se comprueba las repeticiones y si cumple una mínima puntuación S(kw). Cabe señalar que estas funciones poseen un manejo de errores que no se muestran para facilitar la lectura.
+En el siguiente código se puede ver la implementación de la librería \ac{YAKE} y el recuento de palabras relevantes. Además las \textit{keywords} extraídas pasan por un filtro, comprobando las repeticiones y un umbral mínimo de S(kw). Cabe señalar que estas funciones poseen un manejo de errores que no se muestran para facilitar la lectura.
 
 \vspace{0.3cm}
 
 \begin{lstlisting}[caption=Extracción de recuento de palabras y \textit{keywords},          label={lst:listing-python},language=Python]
 texto = ''
-for tweet in query:
-    # Cleans the tweet
+for tweet in query: # Cleans the tweet
     clean_txt = simple_clean(tweet.full_text)
     texto += clean_txt + ' '
-
 keywords = (clean(texto, lng).split())
 counter = Counter(keywords)
-
 data: dict[str, Any] = {
     'total': len(query),
     'count': [],
     'label': [],
     'words': []
 }
-# Words Counter
-for x, y in counter.most_common(6):
+for x, y in counter.most_common(6): # Words Counter
     data['label'].append(x)
     data['count'].append(round((y/len(query)) * 100))
+    
 # YAKE Extraction
 stopwords = load_stop_words(f"app/data/ml_stopwords/
             my-{lng}-stopwords.txt")
@@ -560,6 +573,59 @@ return data
 \end{lstlisting}
 
 El algoritmo \ac{YAKE} se rige por parámetros como la función de duplicación o la cantidad de \textit{keywords} extraídas. Estos parámetros fueron seleccionados cuidadosamente, para que finalmente solo se muestren tres \textit{keywords}. En un principio se extraen quince, pero al pasarlos por el filtro se quedarían en tres como máximo. En cambio, el contador de palabras es seis como máximo. El filtro intenta guardar las palabras claves más relevantes, por lo que elimina las repetidas.
+
+\vspace{0.3cm}
+
+\begin{algorithm}[H]
+
+    \Fn{comparingNames}{
+        \KwIn{setTuple}
+        \KwOut{left(setOut, 3)}
+        setOut $\longleftarrow$ $\emptyset$\;
+        \tcp{Filtrado de palabras repetidas en una \textit{keyword}}
+        
+        \For{$s$ $\in$ $setTuple$}{
+            words = s[0].split()\;
+            $setOut$ $\longleftarrow$ set(words).toString()\;
+            \tcp{Umbral de \textit{S(kw)}}
+            \If{s[1] > 0.05}{
+                \textbf{break}\;
+            }
+        }
+        \tcp{Filtrado \textit{keywords} similares o repetidas}
+        
+        i = 0\;
+        \While{i < $setOut$.size()-1 \textbf{and} $setOut$.size() > 3}{
+            j = i+1\;
+            \While{j < $setOut$.size()}{
+                \If{$setOut[j]$ $\in$ $setOut[i]$}{
+                    \If{$setOut[i]$.length() $\geq$ $setOut[j]$.length()}{
+                        $setOut$.pop(j)\;
+                    }
+                    \Else {
+                        $setOut[i]$ = $setOut[j]$\;
+                        $setOut$.pop(j)\;
+                        i\texttt{-{}-}\;
+                        \textbf{break}\;
+                    }
+                    j\texttt{-{}-};
+                }
+                j++\;
+            }
+            i++\;
+        }
+        \KwRet left(setOut, 3)\;
+    }
+
+    \caption{Filtrado de \textit{Keywords}}
+
+\end{algorithm}
+
+El motivo de la implementación del filtro fue debido a que al usar los parámetros de extracción de \ac{YAKE} los resultados no fueron del todo precisos. Al usar un limitador de duplicación muy alto, las palabras terminaban siendo poco coherentes. Mientras que al usar un limitador de duplicación muy bajo, todas las palabras claves resultaban ser muy parecidas o iguales. Por lo que la solución que he propuesto es extraer muchas palabras claves bajo un limitador de duplicación medio (0.6), donde existen palabras con poca relevancia y palabras coherentes muy similares entre sí.
+
+\vspace{0.3cm}
+
+De modo que al aplicar el filtro, las palabras poco coherentes quedarían eliminadas (palabras con S(kw) más grandes que 0.05). Al igual que las palabras más coherentes, serán seleccionadas por su mayor longitud y menor S(kw).
 
 \vspace{0.3cm}
 
@@ -595,6 +661,16 @@ def comparing_names(s):
     return s_out[:3]
 \end{lstlisting}
 
+De esta manera, la tendencia \textit{Joji} tendría las siguientes \textit{keywords} extraídas con \ac{YAKE}, previas al filtrado:
+
+\vspace{0.3cm}
+
+\textit{[('joji', 0.0023616958679190565), ('album', 0.0207...), ('amo joji', 0.0218...), ('nuevo album', 0.0228...), ('die', 0.0279...), ('nuevo disco', 0.0295...), ('amo', 0.0321...), ('album de joji', 0.0361...), ('you', 0.0433...), ('die for you', 0.0459...), ('goes hard tbh', 0.0598...), ('escuchar', 0.0608...), ('album nuevo', 0.0686...), ('joji freakin goes', 0.0730...), ('cancion', 0.0766...)]}.
+
+\vspace{0.3cm}
+
+Luego, al pasarlas por el filtrado de palabras obtendríamos las siguientes tres \textit{keywords}: \textit{['album de joji', 'die for you', 'nuevo disco']}. Las cuales tienen mucho más sentido y contexto que las tres primeras de la extracción de \ac{YAKE}. En este caso \textit{nuevo album} no se ha contemplado, debido a que la primera \textit{keyword} contiene la clave \textit{album}. Cabe aclarar, que el nombre del álbum es \textit{die for you}.
+
 \subsection{Implementación de los Sentimientos}
 La entidad de los sentimientos está compuesta por distintos valores comentados en la sección \ref{subsub:ent-sentiment}. Para su funcionamiento se ha buscado un analizador léxico enfocado a las redes sociales. Se ha descartado el uso de \ac{NLP} como la librería \textit{TextBlob}, debido a que funcionan por medio de \textit{datasets} por lo que iba a ser más complicado adaptarlos a otros lenguajes y además no funcionarían igual de rápido que otros analizadores de texto estático.
 
@@ -626,11 +702,68 @@ def get_sentiments(tweets, lng, kw):
 
 \vspace{0.3cm}
 
-El proyecto al funcionar con varios idiomas tiene que poseer diferentes léxicos, para ello se puede usar léxicos definidos o traducir cada publicación al inglés, es decir, el léxico usado por \ac{VADER}. Claramente, la segunda opción iba a ser más costosa y con muchas más limitaciones, por lo que se ha decidido traducir el léxico de \ac{VADER} al inglés y configurarlo a los países definidos, en este caso, el español y ucraniano. Obviamente al estar traducido automáticamente, se ha intervenido manualmente para configurar los distintos tiempos verbales o conjugaciones en femenino y masculino. También se han añadido léxicos externos para complementar el conjunto.
+El proyecto al funcionar con varios idiomas tiene que poseer diferentes léxicos con sus respectivas puntuaciones, para ello se puede usar léxicos definidos o traducir cada publicación al inglés y usar el léxico proveniente de \ac{VADER}. Claramente, la segunda opción iba a ser más costosa y con muchas más limitaciones, por lo que se ha decidido traducir el léxico de \ac{VADER} y configurarlo a los países definidos anteriormente, en este caso, el español y ucraniano. Obviamente al estar traducido automáticamente, se ha intervenido manualmente para configurar los distintos tiempos verbales o conjugaciones en femenino y masculino. También se han añadido léxicos externos para complementar el conjunto.
 
 \vspace{0.3cm}
 
-Al tener el léxico definido, el programa puede calcular una puntuación general de una frase. Palabras como «muerte» o «lamento» tienen una connotación negativa, sin embargo, una frase como «Me gustan las hamburguesas» tendrá una puntuación positiva. La puntuación varía desde -1 hasta 1, si la puntuación está cerca del cero se considera neutra.
+De esta manera, se ha adaptado la librería \ac{VADER} desde su repositorio de GitHub \cite{vader-manual} a las necesidades del proyecto. Se ha traducido el léxico inglés al español y ucraniano. Se han añadido varios léxicos más y sus conjugaciones. También se han traducido y añadido manualmente distintas negaciones, diminutivos y aumentativos correspondientes a cada idioma. \cite{Saralegi-vader,ukr-vader}
+
+\vspace{0.3cm}
+
+El léxico de sentimientos de \ac{VADER} es sensible tanto a la polaridad como a la intensidad de los sentimientos expresados en los contextos de las redes sociales, y también es generalmente aplicable al análisis de sentimientos en otros dominios.
+
+\vspace{0.3cm}
+
+El léxico en inglés obtuvo calificaciones sobre los sentimientos de 10 evaluadores humanos independientes. Se clasificaron alrededor de 7500 rasgos de tokens en una escala de \enquote{[–4] Extremadamente negativo} a \enquote{[4] Extremadamente positivo}, con margen para \enquote{[0] Neutral (Ninguno o N/A)}. Dichos rasgos o características con puntuaciones válidas indicaban tanto la polaridad del sentimiento (positivo/negativo) como la intensidad del sentimiento en una escala de -4 a +4. Por ejemplo, la palabra \enquote{bien} tiene una valencia positiva de 0,9, \enquote{bueno} es 1,9 y \enquote{excelente} es 3,1, mientras que \enquote{horrible} es -2,5, el \textit{emoji} con el ceño fruncido :( es -2,2. \cite{vader-manual}
+
+\vspace{0.3cm}
+
+El puntaje de sentimiento de una oración se calcula sumando los puntajes de sentimiento de cada palabra incluida en el diccionario o el léxico de \ac{VADER}. Las palabras individuales tienen una puntuación de sentimientos entre -4 y 4, pero la puntuación de sentimientos devuelta de una oración está entre -1 y 1. Esto es debido, a que la puntuación de sentimiento de una oración es la suma de la puntuación de sentimiento de cada palabra portadora de sentimiento. Debido a ello, se aplica una normalización al total para asignar a un valor entre -1 y 1. La normalización utilizada es: \cite{vader-explained}
+
+\begin{equation}
+\frac{x}{\sqrt{x^{2}+\alpha}}
+\end{equation}
+
+\vspace{0.3cm}
+
+En ella, \textit{x} es la suma de los puntajes de sentimientos de las palabras constituyentes de la oración y alfa es un parámetro de normalización que se ha establecido como 15. La normalización se representa gráficamente a continuación.
+
+\begin{figure}[H]
+    \centering
+    \myfloatalign
+    \includegraphics[width=0.98\textwidth]{gfx/grafica-normalizacion.png}
+    \caption[Normalización utilizada con alfa como 15]{Normalización utilizada con alfa como 15.}\label{gfx:normalizacion}
+\end{figure}
+
+Se puede observar que a medida que \textit{x} crece, se acerca cada vez más a -1 o 1. Con un efecto similar, al usar muchas palabras en el sentimiento de \ac{VADER} se obtendrá una puntuación cercana a -1 o 1. Por lo tanto, el análisis de sentimientos de VADER funciona mejor en documentos cortos, como tweets o oraciones, no en documentos grandes.
+
+\vspace{0.3cm}
+
+Las características léxicas no es lo único que afecta al sentimiento de la oración. Existen otros elementos contextuales, como la puntuación, las mayúsculas y los modificadores que también imparten emoción. El análisis de sentimientos de \ac{VADER} los tiene en cuenta al considerar cinco heurísticas simples. El efecto de estas heurísticas se cuantifica, nuevamente, utilizando evaluadores humanos.
+
+\vspace{0.3cm}
+
+La primera heurística es la puntuación gramatical. Donde la oración \enquote{Me gusta}. expresa menos puntaje que \enquote{¡¡¡me gusta!!!}, esto es debido a que \ac{VADER} tiene en cuenta la cantidad de signos de exclamación y de interrogación que terminan la oración. \ac{VADER} primero calcula la puntuación de sentimiento de la oración. Si la puntuación es positiva, \ac{VADER} añade una cierta cantidad obtenida empíricamente por cada signo de exclamación (0,292) y signo de interrogación (0,18). Si la puntuación es negativa, entonces resta.
+
+\vspace{0.3cm}
+
+La segunda heurística es la capitalización. \enquote{INCREÍBLE actuación} es definitivamente más intenso que \enquote{increíble actuación}. Por ello, se aumenta o disminuye el puntaje de sentimiento de la palabra en 0.733, dependiendo de si la palabra es positiva o negativa, respectivamente. Esta característica no se ha implementado en mi proyecto, debido a que muchos tweets llevaban mayúsculas exclusivamente para llamar la atención y no para expresar sentimientos.
+
+\vspace{0.3cm}
+
+La tercera heurística es el uso de modificadores de grado. Por ejemplo, \enquote{muy lindo} y \enquote{más o menos lindo}. El efecto del modificador en la primera oración es aumentar la intensidad de lindo, mientras que en la segunda oración es disminuir la intensidad. \ac{VADER} mantiene un diccionario de refuerzo que contiene un conjunto de refuerzos y amortiguadores. Además, el efecto del modificador de grado también depende de su distancia a la palabra que está modificando. Las palabras más alejadas tienen un efecto intensificador relativamente menor sobre la palabra base. Un modificador al lado de la palabra suma o resta 0.293 al puntaje de sentimiento de la oración. Un segundo modificador de la palabra base suma o resta el 95\% de 0,293, y un tercero suma/resta el 90\%.
+
+\vspace{0.3cm}
+
+La cuarta heurística es el cambio de polaridad debido al \enquote{pero}. A menudo, \enquote{pero} conecta dos cláusulas con sentimientos contrastantes. El sentimiento dominante, sin embargo, es el último. Por ejemplo, \enquote{Te amo, pero ya no quiero estar contigo}. La primera frase \enquote{te amo} es positiva, pero la segunda \enquote{ya no quiero estar contigo}. es negativo y obviamente más dominante en cuanto al sentimiento. \ac{VADER} implementa un verificador de \enquote{pero}. Básicamente, todas las palabras sentimentales antes del \enquote{pero} tienen su valor reducido al 50\%, mientras que las que están después del \enquote{pero} aumentan al 150\%.
+
+\vspace{0.3cm}
+
+La quinta heurística es examinar el trigrama antes de una característica léxica cargada de sentimientos para captar la negación de la polaridad. Aquí, un trigrama se refiere a un conjunto de tres características léxicas. \ac{VADER} mantiene una lista de palabras negativas. La negación se captura multiplicando la puntuación de sentimiento de la característica léxica cargada de sentimiento por un valor determinado empíricamente -0,74.
+
+\vspace{0.3cm}
+
+Debido a todas estas características, la traducción del léxico inglés se ha realizado de una manera cuidadosa y selectiva (dejando las mismas puntuaciones que el léxico original), aunque se da por sentado que el léxico original tiene mayor capacidad de extraer los sentimientos. Sin embargo, la opción de traducir cada publicación iba a resultar mucho más costosa a la hora de ejecutarse. Primero la gran latencia de las múltiples traducciones que se puedan realizar y luego el limite de llamadas gratuitas diarias que claramente se van a traspasar.
 
 \makeatletter
 \let\orig@lstnumber=\thelstnumber
@@ -668,10 +801,8 @@ def fetch_sentiments(query, lng, kw):
                 popularity = ((tweet.retweet_count + 
                         tweet.favorite_count)*0.5)
                 ppt.append(popularity)
-                data = parse_data(data, vader, y_axis,popularity)
-        $\lstsetnumber{\ldots}$
-        $\lstresetnumber\setcounter{lstnumber}{45}$
-        
+                data = parse_data(data, vader, y_axis,popularity)$\lstsetnumber{\ldots}$
+        $\lstresetnumber\setcounter{lstnumber}{45}$ 
         return data
     except Exception as e:
 
@@ -704,10 +835,8 @@ def topic_relation(text, kw):
         relation = 0
     return relation
 
-def fetch_sentiments(query, lng, kw):
-    $\lstsetnumber{\ldots}$
+def fetch_sentiments(query, lng, kw):$\lstsetnumber{\ldots}$
     $\lstresetnumber\setcounter{lstnumber}{27}$
-    
     m = np.max(ppt)
     a = round(np.average(ppt), 4)
     if m:
@@ -766,34 +895,32 @@ Por ello tuve que cambiar el código y recurrir al scraping, una técnica utiliz
 
 Primero se descarga la búsqueda de noticias relevantes mediante el recurso XML de Google News. Esto se hace mediante los tópicos que se han extraído anteriormente y la biblioteca \textit{BeautifulSoup}, de esta manera las noticias serán mucho más refinadas. Además, siempre se intenta conseguir tres noticias diferentes y actuales, limitando la búsqueda por fecha.
 
-\newpage
+\vspace{0.3cm}
+
+Otro punto diferencial en la herramienta scraping y la API, es que con la herramienta scraping se conseguían artículos muchos más actuales y a la vez diferentes. Esto es debido a que al descargar artículos mediante la API solamente se podía condicionar el parámetro de búsqueda mediante la relevancia o actualidad, por lo que muchos artículos se podían repetir o quedaban desfasados. Gracias al scraping se pueden conseguir artículos recientes y a la vez relevantes, combinado los parámetros de búsqueda en Google News. Además, el problema de los artículos repetidos quedaba solucionado al usar un buscador más sotisficado que el de la API News.
+
+\vspace{0.3cm}
 
 \begin{lstlisting}[caption=Extracción de las noticias,language=Python, mathescape=true]
 # GETTING ARTICLES
 def get_everything(query, code, lang):
-
     # Getting the XML Content from Google News
     # An example: #https://news.google.com/rss/search?q=Riot+when:1d&hl=es&gl=ES&ceid=ES:es
     query = urllib.parse.quote(query.encode('utf8'))
     BASE_URL = f"https://news.google.com/rss/search?q={query}&hl={lang}&gl={code}&ceid={code}:{lang}"
-    print(BASE_URL)
     xml_content = requests.get(BASE_URL).content
     soup = BeautifulSoup(xml_content, features="xml")
     g_items = soup.find_all("item")
 
     if len(g_items) > 0:
-
         # Google Articles with poor info and not parsed yet
         g_articles = []
-
         for item in g_items:
             article = {}
-
             article["link"] = item.find("link").text
             article["title"] = item.find("title").text
             article["publisher"] = item.find("source").text
             article["published_date"] = item.find("pubDate").text
-
             g_articles.append(article)
 
         # Google with more info and parsed
@@ -805,18 +932,25 @@ def get_everything(query, code, lang):
             if article_info:
                 articles.append(article_info)
             cont += 1
-
         if len(articles) == 3:
             return articles
-
+            
     return False
 \end{lstlisting}
 
-De esta manera se consigue información importante, primero los distintos artículos relacionados sobre la tendencia, luego su enlace, el título, la editorial y la fecha de publicación.
+Al estar descargando información de Google News lo hacemos desde la ruta \textit{rss}. \ac{RSS} contiene un resumen de las actualizaciones de un sitio web y está escrito en XML. Una de las etapas más importantes del análisis de archivos XML es la búsqueda de etiquetas. Hay varias formas de hacer esto, mediante nombres o relaciones.
 
 \vspace{0.3cm}
 
-Gracias al enlace podemos proseguir consiguiendo información relevante como una imagen de portada o la descripción.
+Al estar en recopilando información de una página simple y estática, como son los artículos de Google News se ha utilizado la extracción de información mediante nombres. La función de \textit{find} recibe el nombre de la etiqueta que desea obtener y devuelve un objeto BeautifulSoup de la etiqueta si encuentra uno, de lo contrario, devuelve \textit{None}.
+
+\vspace{0.3cm}
+
+De esta manera se puede realizar un bucle de todos los artículos relacionados con la tendencia. Consiguiendo información importante, como su enlace, el título, la editorial y la fecha de publicación.
+
+\vspace{0.3cm}
+
+Gracias a los artículos recopilados y sus enlaces correspondientes, podemos proseguir consiguiendo información relevante como una imagen de portada o la descripción.
 
 \vspace{0.3cm}
 
@@ -831,7 +965,7 @@ def get_article_info(item, lang):
     config.language = lang
     config.number_threads = 100
     a = Article(item["link"], language=lang, config=config)
-
+    
     try:
         a.download()
         a.parse()
@@ -851,17 +985,25 @@ def get_article_info(item, lang):
             return values
         else:
             return False
-
+            
     except ArticleException as ae:
         print(ae)
         return False
-
+        
     except Exception as e:
         print(e)
         return False
 \end{lstlisting}
 
+En esta sección de código, en vez de usar la biblioteca BeautifulSoup, se ha utilizado \textit{Newspaper3k}. Las ventajas de ello es que, la biblioteca Newspaper3k también puede realizar funciones más avanzadas, como descubrir fuentes RSS, buscar URL de artículos de una fuente de noticias principal e incluso extraer varios subprocesos si tiene que buscar más de un artículo. Además, termina siendo más conveniente al extraer información de sitios web diferentes.
+
+\vspace{0.3cm}
+
 Se ha establecido un gran tiempo para la conexión, para asegurar la descarga del articulo y su información, debido a esto el proceso de recopilación de datos sobre la tendencia resulta muy costoso. Aunque gracias al multiprocesamiento, se ha podido realizar las descargas de manera no secuencial y aligerar el proceso.
+
+\vspace{0.3cm}
+
+Después de añadir otras configuraciones como un \textit{header} para poder acceder a la página web sin limitaciones, se recopilan los diferentes datos y se estructuran de una manera conveniente. Además, pasan por validación por si la información recopilada no tiene sentido, en este caso la validación es bastante simple aunque efectiva. La descripción debe tener al menos 20 palabras, debe existir un título y que no sea \enquote{Are you a robot?}. La última validación es debido a que algunas páginas web comprueban cuidadosamente las peticiones que se hacen por estos métodos y devuelven esa información, en vez del articulo.
 
 \subsection{Implementación del Servidor}
 Anteriormente se ha descrito las diferentes implementaciones sobre las entidades, su estructuración y extracción de datos. Dichas implementaciones se encuentran en la carpeta \textit{app}, mientras que todo lo relacionado con el servicio del servidor se encuentra en el directorio \textit{backend}. No entraré en mucho detalle en la implementación de las clases o rutas, ya que se han explicado en la sección de diseño (\ref{ch:diseño}). Aunque interferiré en el modelo \textit{Country} y su obtención.
@@ -915,8 +1057,7 @@ La estructura de un archivo Vue se compone de tres apartados esenciales, el prim
 \vspace{0.3cm}
 
 \begin{lstlisting}[caption=Secciones de Vue,language=Python, mathescape=true]
-<template>
-        $\lstsetnumber{\ldots}$
+<template>$\lstsetnumber{\ldots}$
         $\lstresetnumber\setcounter{lstnumber}{120}$
           <div class="flex overflow-x-auto gap-6 snap-x snap-mandatory sm:snap-normal before:shrink-0 before:w-[20%] sm:before:w-[0%] after:shrink-0 after:w-[20%] sm:after:w-[0%] sm:horizontal sm:pb-14 pb-5">
             <div
@@ -932,43 +1073,33 @@ La estructura de un archivo Vue se compone de tres apartados esenciales, el prim
                 :rank="index+1"
                 :url="encondeURL(articulos.name)"
               />
-            </div>
-                    $\lstsetnumber{\ldots}$
+            </div>$\lstsetnumber{\ldots}$
                     $\lstresetnumber\setcounter{lstnumber}{163}$
-
 </template>
 
 <script>
-import axios from 'axios';
-$\lstsetnumber{\ldots}$
+import axios from 'axios';$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{270}$
-
 export default {
   components: {
     CardViewer,
     GraphViewer,
     MapViewer,
     BubbleViewer,
-  },
-$\lstsetnumber{\ldots}$
+  },$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{410}$
-
 </script>
 
-<style>
-$\lstsetnumber{\ldots}$
+<style>$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{425}$
-
 .truncador-title {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   -webkit-margin-collapse: discard;
-}
-$\lstsetnumber{\ldots}$
+}$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{570}$
-
 </style>
 
 \end{lstlisting}
@@ -982,7 +1113,7 @@ Luego, en la sección de \textit{script} se implementa la parte programable. En 
 \begin{figure}[H]
     \centering
     \myfloatalign
-    \includegraphics[width=1\textwidth]{gfx/lifecyclevue.png}
+    \includegraphics[width=0.82\textwidth]{gfx/lifecyclevue.png}
     \caption[Ciclo de vida de una aplicación Vue]{Ciclo de vida de una aplicación Vue \cite{vue-life}.}\label{gfx:lifecyclevue}
 \end{figure}
 
@@ -1050,13 +1181,11 @@ También se han seguido las buenas prácticas y se ha respetado el contraste de 
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     -webkit-margin-collapse: discard;
-  }
-$\lstsetnumber{\ldots}$
+  }$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{37}$
 }
 
 /* Safari 10.1+ */
-
 @media not all and (min-resolution:.001dpcm) { @media {
   .shadowdrop {
     filter: none;
@@ -1089,31 +1218,26 @@ El código implementado en esta sección se refiere a la subvista popularidad ex
   <li class="py-0.5 pb-1">
     - Average popularity is {{ avaragePopularity.toLocaleString('en-US') }}.
   </li>
-</ul>
-$\lstsetnumber{\ldots}$
+</ul>$\lstsetnumber{\ldots}$
 $\lstresetnumber\setcounter{lstnumber}{62}$
-
 chartOptions: {
-        chart: {
-          type: 'area',
-          toolbar: {
-            show: false,
-          },
-          zoom: {
-            enabled: false,
-          },
-          animations: { enabled: false },
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: this.arrayHours,
-          labels: {
-            format: 'HH:mm',
-          },
-        },
-$\lstsetnumber{\ldots}$
-$\lstresetnumber\setcounter{lstnumber}{94}$
-
+    chart: {
+      type: 'area',
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false,
+      },
+      animations: { enabled: false },
+    },
+    xaxis: {
+      type: 'datetime',
+      categories: this.arrayHours,
+      labels: {
+        format: 'HH:mm',
+        },$\lstsetnumber{\ldots}$
+        $\lstresetnumber\setcounter{lstnumber}{94}$
         markers: {
           size: 3,
         },
@@ -1328,7 +1452,7 @@ Las animaciones y otros detalles parten de esta vista. También existe una funci
 
 \vspace{0.3cm}
 
-\begin{lstlisting}[caption=Diferencias destacables de la implementación de los sentimientos,language=Python, mathescape=true]
+\begin{lstlisting}[caption=Diferencias destacables de la implementación de las noticas,language=Python, mathescape=true]
 import img from '../assets/img_news.jpg';
 export default {
   methods: {
@@ -1362,6 +1486,8 @@ Hay tres noticias bastante parecidas. Las tres anuncian el nuevo álbum, a lo me
     \includegraphics[width=0.75\textwidth]{gfx/ejemplo5.png}
     \caption[Ejemplo de tendencia, vista de noticias]{Ejemplo de tendencia, vista de noticias.}\label{gfx:ejemplo5}
 \end{figure}
+
+La noticia presenta un titulo, descripción y fotografía explicativa. La fotografía es del cantante Joji. Se puede acceder a dicho articulo mediante el enlace de la editorial o directamente pulsando sobre la foto.
 
 \begin{figure}[H]
     \centering
